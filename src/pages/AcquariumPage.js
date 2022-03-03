@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import AddAcquarium from "../components/AddAcquarium";
 const API_URL = "http://localhost:5005";
 
-function AcquariumPage() {
+function AcquariumPage(state) {
   const [acquariums, setAcquariums] = useState([]);
   const [showlog, setShowlog] = useState(false);
 
@@ -48,6 +48,9 @@ function AcquariumPage() {
             <p>{item.name}</p>
           </button>
           <button onClick={() => deleteAcquarium(item._id)}>Delete</button>
+          <Link to={`/edit-acquarium/${item._id}`}>
+            <button>Edit</button>
+          </Link>
           <div>
             {showlog ? <p>Hi from log {item.log}</p> : <p>Add a log</p>}
           </div>
