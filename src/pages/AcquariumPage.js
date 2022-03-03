@@ -6,7 +6,7 @@ const API_URL = "http://localhost:5005";
 
 function AcquariumPage() {
   const [acquariums, setAcquariums] = useState("");
-  const [showlog, setShowlog] = useState(true);
+  const [showlog, setShowlog] = useState(false);
 
   const getAcquariums = () => {
     // Get the token from the localStorage
@@ -25,12 +25,23 @@ function AcquariumPage() {
     getAcquariums();
   }, []);
 
+  function setShowLogHandler() {
+    setShowlog(!showlog);
+  }
+
   return (
     <div>
       <h1>Acquariums page</h1>
       <AddAcquarium refreshAcquariums={getAcquariums} />
       {acquariums.map((item) => (
-        <p key={item._id}>{item.name}</p>
+        <div>
+          <button onClick={setShowLogHandler} key={item._id}>
+            <p>{item.name}</p>
+          </button>
+          <div>
+            {showlog ? <p>Hi from log {item.log}</p> : <p>Add a log</p>}
+          </div>
+        </div>
       ))}
     </div>
   );
