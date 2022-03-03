@@ -10,7 +10,7 @@ function AddAcquarium(props) {
   const [name, setName] = useState("");
   const [liters, setLiters] = useState(0);
   //check date if it is correct
-  const [started, setStarted] = useState(new Date().toDateString());
+  const [started, setStarted] = useState();
   const [logs, setLogs] = useState([]);
   //use context to get user and pass it to node
   const { user } = useContext(AuthContext);
