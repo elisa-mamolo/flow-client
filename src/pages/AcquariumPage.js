@@ -2,9 +2,11 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import AddAcquarium from "../components/AddAcquarium";
+import LogRow from "../components/LogRow";
+
 const API_URL = "http://localhost:5005";
 
-function AcquariumPage(state) {
+function AcquariumPage(props) {
   const [acquariums, setAcquariums] = useState([]);
   const [showlog, setShowlog] = useState(false);
 
@@ -19,8 +21,6 @@ function AcquariumPage(state) {
           headers: { Authorization: `Bearer ${storedToken}` },
         })
         .then((response) => {
-          console.log("response :>> ", response);
-
           setAcquariums(response.data);
         })
         .catch((error) => console.log(error));
@@ -58,7 +58,29 @@ function AcquariumPage(state) {
               <div>
                 {showlog ? (
                   <div>
-                    <p>Hi from log {console.log(item)}</p>
+                    <table>
+                      <tbody>
+                        <tr>
+                          <th>timestamp</th>
+                          <th>alkalinity</th>
+                          <th>ammonia</th>
+                          <th>calcium</th>
+                          <th>magnesium</th>
+                          <th>nitrate</th>
+                          <th>nitrite</th>
+                          <th>ph</th>
+                          <th>phosphate</th>
+                          <th>salinity</th>
+                          <th>temperature</th>
+                        </tr>
+                        {item.logs.map((item) => (
+                          <LogRow logRow={item.measurements} />
+                        ))}
+                      </tbody>
+                    </table>
+                    <Link to={`/addlog/${item._id}`}>
+                      <button>Add Log</button>
+                    </Link>
                   </div>
                 ) : (
                   <Link to={`/addlog/${item._id}`}>
