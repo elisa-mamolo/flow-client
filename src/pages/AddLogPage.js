@@ -1,11 +1,12 @@
 import { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const API_URL = "http://localhost:5005";
 
 function AddLogPage(props) {
+  const navigate = useNavigate();
   const { id } = useParams(); //id from acquarium page
   const [acquarium, setAcquarium] = useState(id);
   const [comments, setComments] = useState("");
@@ -65,6 +66,7 @@ function AddLogPage(props) {
         setAcquarium("");
         setComments("");
         setMeasurements([]);
+        navigate("/acquarium");
       })
       .catch((error) => console.log(error));
   };

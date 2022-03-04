@@ -1,9 +1,15 @@
 import { useState } from "react";
-
+import axios from "axios";
+const API_URL = "http://localhost:5005";
 function LogRow(props) {
-  //console.log(props);
+  const deleteLog = (logid, acquariumid) => {
+    axios
+      .delete(`${API_URL}/log/${logid}/${acquariumid}`)
+      .then(() => {})
+      .catch((err) => console.log(err));
+  };
+
   return props.logRow.map((item) => {
-    console.log(item);
     return (
       <tr key={item._id}>
         <td>
@@ -40,9 +46,12 @@ function LogRow(props) {
           <p>{item.temperature}</p>
         </td>
         <td>
-          <button onClick={() => {}} className="btn-delete">
+          <button
+            onClick={() => deleteLog(props.logRowId, props.logRowAcquarium)}
+          >
             Delete
           </button>
+
           <button onClick={() => {}}>Edit</button>
         </td>
       </tr>

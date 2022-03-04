@@ -61,7 +61,7 @@ function AcquariumPage(props) {
                     <table>
                       <tbody>
                         <tr>
-                          <th>timestamp</th>
+                          <th>Date</th>
                           <th>alkalinity</th>
                           <th>ammonia</th>
                           <th>calcium</th>
@@ -73,8 +73,13 @@ function AcquariumPage(props) {
                           <th>salinity</th>
                           <th>temperature</th>
                         </tr>
-                        {item.logs.map((item) => (
-                          <LogRow logRow={item.measurements} />
+                        {item.logs.map((log) => (
+                          <LogRow
+                            logRow={log.measurements}
+                            logRowAcquarium={log.acquarium}
+                            logRowId={log._id}
+                            key={log._id}
+                          />
                         ))}
                       </tbody>
                     </table>
