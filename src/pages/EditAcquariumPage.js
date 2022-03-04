@@ -24,7 +24,6 @@ function EditAcquariumPage(props) {
       .then((response) => {
         /*show current values in form*/
         const foundAcquarium = response.data;
-        console.log(foundAcquarium.started);
         setName(foundAcquarium.name);
         setLiters(foundAcquarium.liters);
         setStarted(foundAcquarium.started);

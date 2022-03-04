@@ -52,15 +52,16 @@ function AcquariumPage(state) {
             <button>Edit</button>
           </Link>
           <div>
-            {showlog ? <p>Hi from log {item.log}</p> : <p>Add a log</p>}
+            {showlog ? (
+              <p>Hi from log {item.log}</p>
+            ) : (
+              <Link to={`/addlog/${item._id}`}>
+                <button>Add Log</button>
+              </Link>
+            )}
           </div>
         </div>
       ))}
-      <div>
-        {/* <Link to={`/log/addLog/${item}`}>
-          <button>Add Log</button>
-        </Link> */}
-      </div>
     </div>
   );
 }

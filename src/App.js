@@ -6,6 +6,7 @@ import LoginPage from "./pages/LoginPage";
 import Acquarium from "./pages/AcquariumPage";
 import EditAquarium from "./pages/EditAcquariumPage";
 import EditAcquariumPage from "./pages/EditAcquariumPage";
+import AddLogPage from "./pages/AddLogPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/acquarium" element={<Acquarium />} />
         <Route path="/edit-acquarium/:id" element={<EditAcquariumPage />} />
+        <Route path="/addlog/:id" element={<AddLogPage />} />
       </Routes>
     </div>
   );
