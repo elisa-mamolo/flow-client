@@ -22,21 +22,6 @@ function EditLogPage(props) {
   const [alkalinity, setAlkalinity] = useState(0);
   const [calcium, setCalcium] = useState(0);
   const [magnesium, setMagnesium] = useState(0);
-  const [measurements, setMeasurements] = useState([
-    {
-      timestamp: timestamp,
-      ph: ph,
-      temperature: temperature,
-      ammonia: ammonia,
-      nitrite: nitrite,
-      nitrate: nitrate,
-      phosphate: phosphate,
-      salinity: salinity,
-      alkalinity: alkalinity,
-      calcium: calcium,
-      magnesium: magnesium,
-    },
-  ]);
 
   useEffect(() => {
     // prepopulate fields
@@ -44,10 +29,22 @@ function EditLogPage(props) {
       .get(`${API_URL}/log/${logid}`)
       .then((response) => {
         /*show current values in form*/
+
         const foundItemMeasurements = response.data.measurements[0];
         const foundItem = response.data;
+
         setAcquarium(foundItemMeasurements.acquarium);
         setPh(foundItemMeasurements.ph);
+        setTimestamp(foundItemMeasurements.timestamp);
+        setTemperature(foundItemMeasurements.temperature);
+        setAmmonia(foundItemMeasurements.ammonia);
+        setNitrite(foundItemMeasurements.nitrite);
+        setNitrate(foundItemMeasurements.nitrate);
+        setSalinity(foundItemMeasurements.salinity);
+        setPhosphate(foundItemMeasurements.phosphate);
+        setSalinity(foundItemMeasurements.salinity);
+        setAlkalinity(foundItemMeasurements.alkalinity);
+        setCalcium(foundItemMeasurements.calcium);
         setComments(foundItem.comments);
       })
       .catch((error) => console.log(error));
@@ -59,20 +56,20 @@ function EditLogPage(props) {
     //prevent rerendering
     e.preventDefault();
     let object = {
-        timestamp,
-        ph,
-        temperature,
-        ammonia,
-        nitrite,
-        nitrate,
-        phosphate,
-        salinity,
-        alkalinity,
-        calcium,
-        magnesium,
-      },
-      measurements = [object];
-    const requestBody = { acquarium, comments, measurements };
+      timestamp,
+      ph,
+      temperature,
+      ammonia,
+      nitrite,
+      nitrate,
+      phosphate,
+      salinity,
+      alkalinity,
+      calcium,
+      magnesium,
+    };
+    //measurements = [object];
+    const requestBody = { acquarium, comments, measurements: [object] };
 
     axios
       .put(`${API_URL}/log/${logid}/${acquariumid}`, requestBody)
@@ -80,7 +77,7 @@ function EditLogPage(props) {
         // Reset the state
         setAcquarium("");
         setComments("");
-        setMeasurements([]);
+        // setMeasurements([]);
         navigate("/acquarium");
       })
       .catch((error) => console.log(error));
@@ -95,14 +92,14 @@ function EditLogPage(props) {
         <input
           type="date"
           name="timestamp"
-          value={measurements.timestamp}
+          value={timestamp}
           onChange={(e) => setTimestamp(e.target.value)}
         />
         <label>Ph:</label>
         <input
           type="number"
           name="ph"
-          value={measurements.ph}
+          value={ph}
           onChange={(e) => setPh(Number(e.target.value))}
         />
 
@@ -110,7 +107,7 @@ function EditLogPage(props) {
         <input
           type="number"
           name="temperature"
-          value={measurements.temperature}
+          value={temperature}
           onChange={(e) => setTemperature(Number(e.target.value))}
         />
 
@@ -118,7 +115,7 @@ function EditLogPage(props) {
         <input
           type="number"
           name="ammonia"
-          value={measurements.ammonia}
+          value={ammonia}
           onChange={(e) => setAmmonia(Number(e.target.value))}
         />
 
@@ -126,7 +123,7 @@ function EditLogPage(props) {
         <input
           type="number"
           name="nitrite"
-          value={measurements.nitrite}
+          value={nitrite}
           onChange={(e) => setNitrite(Number(e.target.value))}
         />
 
@@ -134,50 +131,42 @@ function EditLogPage(props) {
         <input
           type="number"
           name="nitrate"
-          value={measurements.nitrate}
-          onChange={(e) => setNitrate(Number(e.target.value))}
-        />
-
-        <label>Nitrate:</label>
-        <input
-          type="number"
-          name="nitrate"
-          value={measurements.nitrate}
+          value={nitrate}
           onChange={(e) => setNitrate(Number(e.target.value))}
         />
         <label>Phosphate:</label>
         <input
           type="number"
           name="phosphate"
-          value={measurements.phosphate}
+          value={phosphate}
           onChange={(e) => setPhosphate(Number(e.target.value))}
         />
         <label>Salinity:</label>
         <input
           type="number"
           name="salinity"
-          value={measurements.salinity}
+          value={salinity}
           onChange={(e) => setSalinity(Number(e.target.value))}
         />
         <label>Alkalinity:</label>
         <input
           type="number"
           name="alkalinity"
-          value={measurements.alkalinity}
+          value={alkalinity}
           onChange={(e) => setAlkalinity(Number(e.target.value))}
         />
         <label>Calcium:</label>
         <input
           type="number"
           name="calcium"
-          value={measurements.calcium}
+          value={calcium}
           onChange={(e) => setCalcium(Number(e.target.value))}
         />
         <label>Magnesium:</label>
         <input
           type="number"
           name="magnesium"
-          value={measurements.magnesium}
+          value={magnesium}
           onChange={(e) => setMagnesium(Number(e.target.value))}
         />
         <label>Comment:</label>
