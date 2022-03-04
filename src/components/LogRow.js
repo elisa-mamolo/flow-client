@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 const API_URL = "http://localhost:5005";
+
 function LogRow(props) {
   const deleteLog = (logid, acquariumid) => {
     axios
@@ -52,7 +54,9 @@ function LogRow(props) {
             Delete
           </button>
 
-          <button onClick={() => {}}>Edit</button>
+          <Link to={`/edit-log/${props.logRowId}/${props.logRowAcquarium}`}>
+            <button>Edit</button>
+          </Link>
         </td>
       </tr>
     );
