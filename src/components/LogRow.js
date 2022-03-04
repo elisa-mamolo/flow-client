@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { Button } from "react-bootstrap";
 const API_URL = "http://localhost:5005";
 
 function LogRow(props) {
@@ -48,14 +49,14 @@ function LogRow(props) {
           <p>{item.temperature}</p>
         </td>
         <td>
-          <button
+          <Button
             onClick={() => deleteLog(props.logRowId, props.logRowAcquarium)}
           >
             Delete
-          </button>
+          </Button>
 
           <Link to={`/edit-log/${props.logRowId}/${props.logRowAcquarium}`}>
-            <button>Edit</button>
+            <Button>Edit</Button>
           </Link>
         </td>
       </tr>

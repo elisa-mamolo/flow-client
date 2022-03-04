@@ -1,8 +1,7 @@
-// src/pages/SignupPage.js
-
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Button, Form } from "react-bootstrap";
 
 const API_URL = "http://localhost:5005";
 
@@ -41,7 +40,7 @@ function SignupPage(props) {
     <div className="SignupPage">
       <h1>Sign Up</h1>
 
-      <form onSubmit={handleSignupSubmit}>
+      <Form onSubmit={handleSignupSubmit}>
         <label>Email:</label>
         <input type="email" name="email" value={email} onChange={handleEmail} />
 
@@ -56,8 +55,8 @@ function SignupPage(props) {
         <label>Name:</label>
         <input type="text" name="name" value={name} onChange={handleName} />
 
-        <button type="submit">Sign Up</button>
-      </form>
+        <Button type="submit">Sign Up</Button>
+      </Form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 

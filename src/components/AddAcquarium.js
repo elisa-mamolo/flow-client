@@ -3,6 +3,7 @@
 import { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
+import { Button } from "react-bootstrap";
 
 const API_URL = "http://localhost:5005";
 
@@ -61,7 +62,7 @@ function AddAcquarium(props) {
           onChange={(e) => setStarted(e.target.value)}
         />
 
-        <button type="submit">Submit</button>
+        <Button type="submit">Submit</Button>
       </form>
     </div>
   );

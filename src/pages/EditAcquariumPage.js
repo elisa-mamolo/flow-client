@@ -2,6 +2,8 @@ import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import { useParams, useNavigate } from "react-router-dom";
+import { Button, Form, FormCheck, FormLabel } from "react-bootstrap";
+import NavBar from "../components/NavBar";
 
 const API_URL = "http://localhost:5005";
 
@@ -47,36 +49,38 @@ function EditAcquariumPage(props) {
 
   return (
     <div>
+      <NavBar></NavBar>
       <h3>Edit Acquarium</h3>
 
-      <form onSubmit={handleFormSubmit}>
-        <label>Name:</label>
-        <input
-          type="text"
-          name="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-
-        <label>Liters:</label>
-        <input
-          type="number"
-          name="liters"
-          value={liters}
-          onChange={(e) => setLiters(e.target.value)}
-        />
-
-        <label>Start Date:</label>
-        <input
-          type="date"
-          name="started"
-          selected={started}
-          value={started}
-          onChange={(e) => setStarted(e.target.value)}
-        />
-
-        <button type="submit">Submit</button>
-      </form>
+      <Form onSubmit={handleFormSubmit}>
+        <fieldset>
+          <Form.Group className="">
+            <Form.Label htmlFor="disabledTextInput">Name</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder=""
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <Form.Label>Liters</Form.Label>
+            <Form.Control
+              type="number"
+              name="liters"
+              value={liters}
+              onChange={(e) => setLiters(e.target.value)}
+            />
+            <Form.Label>Started on</Form.Label>
+            <Form.Control
+              type="date"
+              name="started"
+              selected={started}
+              value={started}
+              onChange={(e) => setStarted(e.target.value)}
+            />
+          </Form.Group>
+          <Button type="submit">Submit</Button>
+        </fieldset>
+      </Form>
     </div>
   );
 }

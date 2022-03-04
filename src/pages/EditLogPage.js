@@ -2,6 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import { useParams, useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 const API_URL = "http://localhost:5005";
 
@@ -177,7 +178,7 @@ function EditLogPage(props) {
           onChange={(e) => setComments(Number(e.target.value))}
         />
 
-        <button type="submit">Submit</button>
+        <Button type="submit">Submit</Button>
       </form>
     </div>
   );
