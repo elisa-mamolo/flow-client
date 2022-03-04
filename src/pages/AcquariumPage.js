@@ -19,6 +19,8 @@ function AcquariumPage(state) {
           headers: { Authorization: `Bearer ${storedToken}` },
         })
         .then((response) => {
+          console.log("response :>> ", response);
+
           setAcquariums(response.data);
         })
         .catch((error) => console.log(error));
@@ -42,26 +44,32 @@ function AcquariumPage(state) {
       <h1>Acquariums page</h1>
       {/* <AddAcquarium refreshAcquariums={getAcquariums} /> */}
       <AddAcquarium></AddAcquarium>
-      {acquariums.map((item) => (
-        <div key={item._id}>
-          <button onClick={setShowLogHandler}>
-            <p>{item.name}</p>
-          </button>
-          <button onClick={() => deleteAcquarium(item._id)}>Delete</button>
-          <Link to={`/edit-acquarium/${item._id}`}>
-            <button>Edit</button>
-          </Link>
-          <div>
-            {showlog ? (
-              <p>Hi from log {item.log}</p>
-            ) : (
-              <Link to={`/addlog/${item._id}`}>
-                <button>Add Log</button>
+      {acquariums && (
+        <div>
+          {acquariums.map((item) => (
+            <div key={item._id}>
+              <button onClick={setShowLogHandler}>
+                <p>{item.name}</p>
+              </button>
+              <button onClick={() => deleteAcquarium(item._id)}>Delete</button>
+              <Link to={`/edit-acquarium/${item._id}`}>
+                <button>Edit</button>
               </Link>
-            )}
-          </div>
+              <div>
+                {showlog ? (
+                  <div>
+                    <p>Hi from log {console.log(item)}</p>
+                  </div>
+                ) : (
+                  <Link to={`/addlog/${item._id}`}>
+                    <button>Add Log</button>
+                  </Link>
+                )}
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
+      )}
     </div>
   );
 }
