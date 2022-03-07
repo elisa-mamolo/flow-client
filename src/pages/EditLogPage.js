@@ -24,6 +24,8 @@ function EditLogPage(props) {
   const [calcium, setCalcium] = useState(0);
   const [magnesium, setMagnesium] = useState(0);
 
+  const [errorMessage, setErrorMessage] = useState(undefined);
+
   useEffect(() => {
     // prepopulate fields
     axios
@@ -81,7 +83,10 @@ function EditLogPage(props) {
         // setMeasurements([]);
         navigate("/acquarium");
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        const errorDescription = error.response.data.message;
+        setErrorMessage(errorDescription);
+      });
   };
 
   return (
@@ -180,6 +185,7 @@ function EditLogPage(props) {
 
         <Button type="submit">Submit</Button>
       </form>
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
     </div>
   );
 }

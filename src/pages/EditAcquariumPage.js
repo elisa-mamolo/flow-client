@@ -14,6 +14,7 @@ function EditAcquariumPage(props) {
   const [started, setStarted] = useState();
   const [logs, setLogs] = useState([]);
   const { user } = useContext(AuthContext);
+  const [errorMessage, setErrorMessage] = useState(undefined);
 
   // Get the URL parameter `:projectId`
   const { id } = useParams();
@@ -40,11 +41,17 @@ function EditAcquariumPage(props) {
     // Create an object representing the body of the PUT request
     const requestBody = { user, name, liters, started, logs };
     // Make a PUT request to update the project
-    axios.put(`${API_URL}/acquarium/${id}`, requestBody).then((response) => {
-      // Once the request is resolved successfully and the project
-      // is updated we navigate back to the details page
-      navigate("/acquarium");
-    });
+    axios
+      .put(`${API_URL}/acquarium/${id}`, requestBody)
+      .then((response) => {
+        // Once the request is resolved successfully and the project
+        // is updated we navigate back to the details page
+        navigate("/acquarium");
+      })
+      .catch((error) => {
+        const errorDescription = error.response.data.message;
+        setErrorMessage(errorDescription);
+      });
   };
 
   return (
@@ -81,6 +88,7 @@ function EditAcquariumPage(props) {
           <Button type="submit">Submit</Button>
         </fieldset>
       </Form>
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
     </div>
   );
 }

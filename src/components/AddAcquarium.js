@@ -16,6 +16,8 @@ function AddAcquarium(props) {
   //use context to get user and pass it to node
   const { user } = useContext(AuthContext);
 
+  const [errorMessage, setErrorMessage] = useState(undefined);
+
   const handleSubmit = (e) => {
     //prevent rerendering
     e.preventDefault();
@@ -30,7 +32,10 @@ function AddAcquarium(props) {
         setStarted(new Date().toDateString());
         setLogs([]);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        const errorDescription = error.response.data.message;
+        setErrorMessage(errorDescription);
+      });
   };
 
   return (
@@ -64,6 +69,7 @@ function AddAcquarium(props) {
 
         <Button type="submit">Submit</Button>
       </form>
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
     </div>
   );
 }

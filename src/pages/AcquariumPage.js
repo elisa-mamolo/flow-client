@@ -44,7 +44,7 @@ function AcquariumPage(props) {
 
   return (
     <div>
-      <NavBar />
+      {/* <NavBar /> */}
       <h1>Your Acquariums</h1>
       {/* <AddAcquarium refreshAcquariums={getAcquariums} /> */}
 

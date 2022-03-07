@@ -8,7 +8,6 @@ const API_URL = "http://localhost:5005";
 
 function NavBar(props) {
   const { user } = useContext(AuthContext);
-  console.log(user);
 
   return (
     <div>
