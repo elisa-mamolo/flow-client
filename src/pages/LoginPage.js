@@ -45,10 +45,12 @@ function LoginPage(props) {
 
   return (
     <div>
+      <NavBarComponent></NavBarComponent>
       <div className="LoginPage mt-5">
         <div className="container h-100 w-50 ">
           <div className="row d-flex justify-content-center bg-dark ">
             <div className="col-12 col-md-8 col-lg-6 col-xl-5 text-white pt-5 pb-5">
+              <h3>Login</h3>
               <Form onSubmit={handleLoginSubmit}>
                 <div className="form-group">
                   <label>Email:</label>
