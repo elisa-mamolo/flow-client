@@ -2,7 +2,8 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
-import { Button } from "react-bootstrap";
+import { Button, Form, Navbar } from "react-bootstrap";
+import NavBarComponent from "../components/NavBar";
 
 const API_URL = "http://localhost:5005";
 
@@ -43,27 +44,48 @@ function LoginPage(props) {
   };
 
   return (
-    <div className="LoginPage">
-      <h1>Login</h1>
+    <div>
+      <div className="LoginPage mt-5">
+        <div className="container h-100 w-50 ">
+          <div className="row d-flex justify-content-center bg-dark ">
+            <div className="col-12 col-md-8 col-lg-6 col-xl-5 text-white pt-5 pb-5">
+              <Form onSubmit={handleLoginSubmit}>
+                <div className="form-group">
+                  <label>Email:</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={email}
+                    onChange={handleEmail}
+                    className="form-control"
+                  />
 
-      <form onSubmit={handleLoginSubmit}>
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
+                  <label>Password:</label>
+                  <input
+                    type="password"
+                    name="password"
+                    value={password}
+                    onChange={handlePassword}
+                    className="form-control"
+                  />
+                  <br></br>
 
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
-
-        <Button type="submit">Login</Button>
-      </form>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-      <p>Don't have an account yet?</p>
-      <Link to={"/signup"}> Sign Up</Link>
+                  <Button type="submit" className="btn btn-primary">
+                    Login
+                  </Button>
+                </div>
+              </Form>
+              <br></br>
+              {errorMessage && <p className="error-message">{errorMessage}</p>}
+              <p>Don't have an account yet?</p>
+              <Link to={"/signup"} className="text-white">
+                {" "}
+                Sign Up
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
