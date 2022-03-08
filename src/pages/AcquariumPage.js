@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import AddAcquarium from "../components/AddAcquarium";
 import LogRow from "../components/LogRow";
+import Moment from "moment";
 import {
   Button,
   Card,
@@ -54,13 +55,13 @@ function AcquariumPage(props) {
   return (
     <div>
       <NavBar />
-      <h1>Your Acquariums</h1>
+      <h1 className="titles">Your Acquariums</h1>
 
       {acquariums && (
         <div>
           <Container>
-            <Row xs={2} md={4} lg={6}>
-              <Col>
+            <Row xs={1} md={4} lg={12}>
+              <Col lg={2}>
                 <Button onClick={() => setShowAddAcquarium(!showAddAcquarium)}>
                   Add Acquarium
                 </Button>
@@ -78,8 +79,10 @@ function AcquariumPage(props) {
                       />
                       <Card.Body>
                         <Card.Title>{item.name}</Card.Title>
-                        <Card.Text>{item.started}</Card.Text>
-                        <Card.Text>{item.liters}</Card.Text>
+                        <Card.Text>
+                          Started: {Moment(item.started).format("d MMM YYYY")}
+                        </Card.Text>
+                        <Card.Text>Liters: {item.liters}</Card.Text>
 
                         <Link to={`/edit-acquarium/${item._id}`}>
                           <Button>Edit</Button>
@@ -96,7 +99,14 @@ function AcquariumPage(props) {
                       </Card.Body>
                     </Card>
 
-                    {showlog ? (
+                    {showAddAcquarium ? <AddAcquarium /> : <p></p>}
+                  </div>
+                ))}
+              </Col>
+              <Col>
+                {acquariums.map((item) => (
+                  <div>
+                    {showlog && (
                       <div>
                         <Table striped bordered hover>
                           <tbody>
@@ -124,11 +134,7 @@ function AcquariumPage(props) {
                           </tbody>
                         </Table>
                       </div>
-                    ) : (
-                      <p></p>
                     )}
-
-                    {showAddAcquarium ? <AddAcquarium /> : <p></p>}
                   </div>
                 ))}
               </Col>
