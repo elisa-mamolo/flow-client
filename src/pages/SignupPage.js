@@ -38,30 +38,55 @@ function SignupPage(props) {
 
   return (
     <div className="SignupPage">
-      <h1>Sign Up</h1>
+      <div className="LoginPage mt-5">
+        <div className="container h-100 w-50 ">
+          <div className="row d-flex justify-content-center bg-dark ">
+            <div className="col-12 col-md-8 col-lg-6 col-xl-5 text-white pt-5 pb-5">
+              <Form onSubmit={handleSignupSubmit}>
+                <div className="form-group">
+                  <h4 className="text-white">Signup</h4>
+                  <label className="text-white">Email:</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={email}
+                    onChange={handleEmail}
+                    className="form-control"
+                  />
 
-      <Form onSubmit={handleSignupSubmit}>
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
+                  <label className="text-white">Password:</label>
+                  <input
+                    type="password"
+                    name="password"
+                    value={password}
+                    onChange={handlePassword}
+                    className="form-control"
+                  />
 
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
+                  <label className="text-white">Name:</label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={name}
+                    onChange={handleName}
+                    className="form-control"
+                  />
 
-        <label>Name:</label>
-        <input type="text" name="name" value={name} onChange={handleName} />
+                  <Button type="submit">Sign Up</Button>
+                </div>
+              </Form>
 
-        <Button type="submit">Sign Up</Button>
-      </Form>
+              {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-      <p>Already have account?</p>
-      <Link to={"/login"}> Login</Link>
+              <p>Already have account?</p>
+              <Link to={"/login"} className="text-white">
+                {" "}
+                Login
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
