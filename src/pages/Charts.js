@@ -7,6 +7,7 @@ import { Button, Card, Table } from "react-bootstrap";
 import NavBar from "../components/NavBar";
 import React, { PureComponent } from "react";
 import NavBarComponent from "../components/NavBar";
+import moment from "moment";
 
 import {
   LineChart,
@@ -29,6 +30,11 @@ function Charts(props) {
   const { id } = useParams();
   const [data, setData] = useState([]);
   const [acquarium, setAcquarium] = useState([]);
+
+  function formatXAxis(item) {
+    // If using moment.js
+    return moment(item).format("DD/MM/YY");
+  }
 
   useEffect(() => {
     const getAcquariums = () => {
@@ -80,7 +86,7 @@ function Charts(props) {
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="timestamp" />
+            <XAxis dataKey="timestamp" tickFormatter={formatXAxis} />
             <YAxis />
             <Tooltip />
             <Legend />
@@ -105,7 +111,7 @@ function Charts(props) {
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="timestamp" />
+            <XAxis dataKey="timestamp" tickFormatter={formatXAxis} />
             <YAxis />
             <Tooltip />
             <Legend />
@@ -129,7 +135,7 @@ function Charts(props) {
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="timestamp" />
+            <XAxis dataKey="timestamp" tickFormatter={formatXAxis} />
             <YAxis />
             <Tooltip />
             <Legend />
