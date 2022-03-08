@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { Navbar, Container } from "react-bootstrap";
+import { Navbar, Container, Button } from "react-bootstrap";
 import { AuthContext } from "../context/auth.context";
 
 const API_URL = "http://localhost:5005";
@@ -17,7 +17,22 @@ function NavBar(props) {
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             <Navbar.Text>
-              Signed in as: <a href="#login">{user.email}</a>
+              {user && (
+                <p>
+                  Signed in as: <a href="#login">{user.email}</a>
+                  <Button className="bg-light text-black">Logout</Button>
+                </p>
+              )}{" "}
+              {!user && (
+                <div>
+                  <Link to={`/login`}>
+                    <Button>Login</Button>
+                  </Link>
+                  <Link to={`/signup`}>
+                    <Button>Signup</Button>
+                  </Link>
+                </div>
+              )}
             </Navbar.Text>
           </Navbar.Collapse>
         </Container>
