@@ -90,11 +90,12 @@ function AcquariumPage(props) {
                         <Button onClick={() => deleteAcquarium(item._id)}>
                           Delete
                         </Button>
+                        <br></br>
                         <Link to={`/addlog/${item._id}`}>
-                          <Button>Add Log</Button>
+                          <Button className="mt-2">Add Log</Button>
                         </Link>
                         <Link to={`/charts/${item._id}`}>
-                          <Button>Charts</Button>
+                          <Button className="mt-2">Charts</Button>
                         </Link>
                       </Card.Body>
                     </Card>
@@ -112,16 +113,17 @@ function AcquariumPage(props) {
                           <tbody>
                             <tr>
                               <th>Date</th>
-                              <th>alkalinity</th>
-                              <th>ammonia</th>
-                              <th>calcium</th>
-                              <th>magnesium</th>
-                              <th>nitrate</th>
-                              <th>nitrite</th>
-                              <th>ph</th>
-                              <th>phosphate</th>
-                              <th>salinity</th>
-                              <th>temperature</th>
+                              <th>Alkalinity</th>
+                              <th>Ammonia</th>
+                              <th>Calcium</th>
+                              <th>Magnesium</th>
+                              <th>Nitrate</th>
+                              <th>Nitrite</th>
+                              <th>Ph</th>
+                              <th>Phosphate</th>
+                              <th>Salinity</th>
+                              <th>Temperature</th>
+                              <th>Actions</th>
                             </tr>
                             {item.logs.map((log) => (
                               <LogRow
