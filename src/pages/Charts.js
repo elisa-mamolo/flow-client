@@ -6,6 +6,7 @@ import LogRow from "../components/LogRow";
 import { Button, Card, Table } from "react-bootstrap";
 import NavBar from "../components/NavBar";
 import React, { PureComponent } from "react";
+import NavBarComponent from "../components/NavBar";
 
 import {
   LineChart,
@@ -27,6 +28,7 @@ const API_URL = "http://localhost:5005";
 function Charts(props) {
   const { id } = useParams();
   const [data, setData] = useState([]);
+  const [acquarium, setAcquarium] = useState([]);
 
   useEffect(() => {
     const getAcquariums = () => {
@@ -40,6 +42,7 @@ function Charts(props) {
         })
         .then((response) => {
           let dataArray = [];
+          setAcquarium(response.data);
           let logsArray = response.data.logs;
           logsArray.forEach((obj) => {
             Object.keys(obj).forEach((key) => {
@@ -50,6 +53,7 @@ function Charts(props) {
               }
             });
           });
+
           setData(dataArray);
         })
         .catch((error) => console.log(error));
@@ -59,7 +63,8 @@ function Charts(props) {
 
   return (
     <div>
-      <h2>Charts</h2>
+      <NavBarComponent />
+      <h2>Charts for {acquarium.name}</h2>
       {data.length === 0 && <p>Add logs to see charts data</p>}
       {data.length > 0 && (
         <div>
