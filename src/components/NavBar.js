@@ -21,7 +21,7 @@ function NavBar(props) {
             <Navbar.Text>
               {user && (
                 <p>
-                  Signed in as: <a href="#login">{user.email}</a>
+                  Signed in as: <a href="#login">{user.email}</a>{" "}
                   <Button className="bg-light text-black">Logout</Button>
                 </p>
               )}{" "}

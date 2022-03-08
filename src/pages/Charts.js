@@ -64,7 +64,7 @@ function Charts(props) {
   return (
     <div>
       <NavBarComponent />
-      <h2>Charts for {acquarium.name}</h2>
+      <h2 className="titles">Charts for {acquarium.name}</h2>
       {data.length === 0 && <p>Add logs to see charts data</p>}
       {data.length > 0 && (
         <div>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Button, Form } from "react-bootstrap";
+import NavBar from "../components/NavBar";
 
 const API_URL = "http://localhost:5005";
 
@@ -38,6 +39,7 @@ function SignupPage(props) {
 
   return (
     <div className="SignupPage">
+      <NavBar></NavBar>
       <div className="LoginPage mt-5">
         <div className="container h-100 w-50 ">
           <div className="row d-flex justify-content-center bg-dark ">
