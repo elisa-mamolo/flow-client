@@ -16,7 +16,7 @@ import {
 import NavBar from "../components/NavBar";
 import { AuthContext } from "../context/auth.context";
 
-const API_URL = "http://localhost:5005";
+const API_URL = "https://flow-acquarium-app.herokuapp.com";
 
 function AcquariumPage(props) {
   const [acquariums, setAcquariums] = useState([]);
@@ -99,8 +99,6 @@ function AcquariumPage(props) {
                         </Link>
                       </Card.Body>
                     </Card>
-
-                    {showAddAcquarium ? <AddAcquarium /> : <p></p>}
                   </div>
                 ))}
               </Col>
@@ -141,6 +139,7 @@ function AcquariumPage(props) {
                 ))}
               </Col>
             </Row>
+            <Row>{showAddAcquarium && <AddAcquarium />}</Row>
           </Container>
         </div>
       )}

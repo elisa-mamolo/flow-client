@@ -4,7 +4,7 @@ import { AuthContext } from "../context/auth.context";
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
-const API_URL = "http://localhost:5005";
+const API_URL = "https://flow-acquarium-app.herokuapp.com";
 
 function EditLogPage(props) {
   const navigate = useNavigate();
