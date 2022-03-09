@@ -3,9 +3,9 @@
 import { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 
-const API_URL = "http://localhost:5005";
+const API_URL = "https://flow-acquarium-app.herokuapp.com";
 
 function AddAcquarium(props) {
   const [name, setName] = useState("");
@@ -40,36 +40,48 @@ function AddAcquarium(props) {
 
   return (
     <div className="AddAcquarium">
-      <h3>Add Acquarium</h3>
+      <div className="LoginPage mt-5">
+        <div className="container h-100 w-50 ">
+          <div className="row d-flex justify-content-center bg-dark ">
+            <div className="col-12 col-md-8 col-lg-6 col-xl-5 text-white pt-5 pb-5">
+              <h3 className="title">Add Acquarium</h3>
 
-      <form onSubmit={handleSubmit}>
-        <label>Name:</label>
-        <input
-          type="text"
-          name="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+              <Form onSubmit={handleSubmit}>
+                <Form.Group>
+                  <Form.Label>Name:</Form.Label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
 
-        <label>Liters:</label>
-        <input
-          type="number"
-          name="liters"
-          value={liters}
-          onChange={(e) => setLiters(e.target.value)}
-        />
+                  <Form.Label>Liters:</Form.Label>
+                  <input
+                    type="number"
+                    name="liters"
+                    value={liters}
+                    onChange={(e) => setLiters(e.target.value)}
+                  />
 
-        <label>Start Date:</label>
-        <input
-          type="date"
-          name="started"
-          value={started}
-          onChange={(e) => setStarted(e.target.value)}
-        />
+                  <Form.Label>Start Date:</Form.Label>
+                  <input
+                    type="date"
+                    name="started"
+                    value={started}
+                    onChange={(e) => setStarted(e.target.value)}
+                  />
 
-        <Button type="submit">Submit</Button>
-      </form>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+                  <Button type="submit">Submit</Button>
+                  {errorMessage && (
+                    <p className="error-message">{errorMessage}</p>
+                  )}
+                </Form.Group>
+              </Form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

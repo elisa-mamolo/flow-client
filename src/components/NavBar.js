@@ -1,19 +1,36 @@
-import { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { useState, useContext, useEffect } from "react";
+import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
-import { Navbar, Container, Button, Nav } from "react-bootstrap";
+import { Navbar, Container, Button, Nav, Image } from "react-bootstrap";
 import { AuthContext } from "../context/auth.context";
+import LogoImage from "../waveicon.png";
 
-const API_URL = "http://localhost:5005";
+const API_URL = "https://flow-acquarium-app.herokuapp.com";
 
 function NavBar(props) {
   const { user } = useContext(AuthContext);
+  const [loggedOut, setLoggedOut] = useState(false);
+
+  const logout = () => {
+    localStorage.removeItem("authToken");
+    setLoggedOut(true);
+  };
 
   return (
     <div>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="/">Flow</Navbar.Brand>
+          <Image
+            src={LogoImage}
+            width="50"
+            height="50"
+            className="d-inline-block align-top"
+            alt="logo"
+          />
+
+          <Navbar.Brand href="/" className="ml-5">
+            Flow
+          </Navbar.Brand>
           <Navbar.Toggle />
           <Nav.Link href="/">Home</Nav.Link>
           <Nav.Link href="/acquarium">Acquariums</Nav.Link>
@@ -35,6 +52,9 @@ function NavBar(props) {
                   </Link>
                 </div>
               )}
+              <Button className="bg-light text-black" onClick={logout}>
+                Logout
+              </Button>
             </Navbar.Text>
           </Navbar.Collapse>
         </Container>
