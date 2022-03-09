@@ -49,11 +49,21 @@ function AcquariumPage(props) {
   };
 
   function setShowLogHandler() {
+    if (showAddAcquarium) {
+      setShowAddAcquarium(!showAddAcquarium);
+    }
     setShowlog(!showlog);
   }
 
+  function handleTableVisibility() {
+    if (showlog) {
+      setShowLogHandler();
+    }
+    setShowAddAcquarium(!showAddAcquarium);
+  }
+
   return (
-    <div>
+    <section className="background">
       <NavBar />
       <h1 className="titles">Your Acquariums</h1>
 
@@ -61,14 +71,14 @@ function AcquariumPage(props) {
         <div>
           <Container>
             <Row xs={1} md={4} lg={12}>
-              <Col lg={2}>
-                <Button onClick={() => setShowAddAcquarium(!showAddAcquarium)}>
+              <Col>
+                <Button onClick={() => handleTableVisibility()}>
                   Add Acquarium
                 </Button>
               </Col>
               <Col>
                 {acquariums.map((item) => (
-                  <div key={item._id}>
+                  <div key={item._id} className="gradientColor">
                     <Card
                       style={{ width: "18rem" }}
                       onClick={setShowLogHandler}
@@ -102,13 +112,13 @@ function AcquariumPage(props) {
                   </div>
                 ))}
               </Col>
-              <Col>
+              <Col lg={5}>
                 {acquariums.map((item) => (
                   <div>
                     {showlog && (
                       <div>
                         <Table striped bordered hover>
-                          <tbody>
+                          <tbody className="tableStyle">
                             <tr>
                               <th>Date</th>
                               <th>Alkalinity</th>
@@ -137,13 +147,17 @@ function AcquariumPage(props) {
                     )}
                   </div>
                 ))}
+                {showAddAcquarium && <AddAcquarium />}
               </Col>
             </Row>
-            <Row>{showAddAcquarium && <AddAcquarium />}</Row>
           </Container>
         </div>
       )}
-    </div>
+      <div class="wave wave1"></div>
+      <div class="wave wave2"></div>
+      <div class="wave wave3"></div>
+      <div class="wave wave4"></div>
+    </section>
   );
 }
 

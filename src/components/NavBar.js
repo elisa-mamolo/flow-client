@@ -21,19 +21,28 @@ function NavBar(props) {
             alt="logo"
           />
 
-          <Navbar.Brand href="/" className="ml-5">
+          <Navbar.Brand href="/" className=" text-white">
             Flow
           </Navbar.Brand>
           <Navbar.Toggle />
-          <Nav.Link href="/">Home</Nav.Link>
-          {isLoggedIn && <Nav.Link href="/acquarium">Acquariums</Nav.Link>}
+          <Nav.Link href="/" className="text-white">
+            Home
+          </Nav.Link>
+          {isLoggedIn && (
+            <Nav.Link href="/acquarium" className="text-white">
+              Acquariums
+            </Nav.Link>
+          )}
 
           <Navbar.Collapse className="justify-content-end">
             <Navbar.Text>
               {isLoggedIn && (
                 <p>
                   Signed in as: <a href="#login">{user.username}</a>{" "}
-                  <Button className="bg-light text-black" onClick={logOutUser}>
+                  <Button
+                    className="bg-light text-black btn-light"
+                    onClick={logOutUser}
+                  >
                     Logout
                   </Button>
                 </p>
@@ -41,10 +50,10 @@ function NavBar(props) {
               {!isLoggedIn && (
                 <div>
                   <Link to={`/login`}>
-                    <Button>Login</Button>
+                    <Button className="btn-light">Login</Button>
                   </Link>
                   <Link to={`/signup`}>
-                    <Button>Signup</Button>
+                    <Button className="btn-light">Signup</Button>
                   </Link>
                 </div>
               )}

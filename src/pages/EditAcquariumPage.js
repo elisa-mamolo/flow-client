@@ -55,41 +55,57 @@ function EditAcquariumPage(props) {
   };
 
   return (
-    <div>
+    <section className="background">
       <NavBar></NavBar>
-      <h3>Edit Acquarium</h3>
 
-      <Form onSubmit={handleFormSubmit}>
-        <fieldset>
-          <Form.Group className="">
-            <Form.Label htmlFor="disabledTextInput">Name</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder=""
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <Form.Label>Liters</Form.Label>
-            <Form.Control
-              type="number"
-              name="liters"
-              value={liters}
-              onChange={(e) => setLiters(e.target.value)}
-            />
-            <Form.Label>Started on</Form.Label>
-            <Form.Control
-              type="date"
-              name="started"
-              selected={started}
-              value={started}
-              onChange={(e) => setStarted(e.target.value)}
-            />
-          </Form.Group>
-          <Button type="submit">Submit</Button>
-        </fieldset>
-      </Form>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-    </div>
+      <div className="LoginPage mt-5">
+        <div className="container h-100 w-50 ">
+          <div className="row d-flex justify-content-center">
+            <div className="col-12 col-md-8 col-lg-6 col-xl-5 text-white pt-5 pb-5">
+              <h3 className="text-white">Edit Acquarium</h3>
+              <Form onSubmit={handleFormSubmit}>
+                <fieldset>
+                  <Form.Group className="">
+                    <Form.Label htmlFor="disabledTextInput">Name</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder=""
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      className="form-control"
+                    />
+                    <Form.Label>Liters</Form.Label>
+                    <Form.Control
+                      type="number"
+                      name="liters"
+                      value={liters}
+                      onChange={(e) => setLiters(e.target.value)}
+                      className="form-control"
+                    />
+                    <Form.Label>Started on</Form.Label>
+                    <Form.Control
+                      type="date"
+                      name="started"
+                      selected={started}
+                      value={started}
+                      onChange={(e) => setStarted(e.target.value)}
+                      className="form-control"
+                    />
+                  </Form.Group>
+                  <br></br>
+                  <Button type="submit">Submit</Button>
+                </fieldset>
+              </Form>
+              {errorMessage && <p className="error-message">{errorMessage}</p>}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wave wave1"></div>
+      <div class="wave wave2"></div>
+      <div class="wave wave3"></div>
+      <div class="wave wave4"></div>
+    </section>
   );
 }
 

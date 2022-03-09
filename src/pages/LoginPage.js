@@ -72,7 +72,7 @@ function LoginPage(props) {
                   />
                   <br></br>
 
-                  <Button type="submit" className="btn btn-primary">
+                  <Button type="submit" className="btn btn-light">
                     Login
                   </Button>
                 </div>
