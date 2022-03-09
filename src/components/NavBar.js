@@ -8,14 +8,7 @@ import LogoImage from "../waveicon.png";
 const API_URL = "https://flow-acquarium-app.herokuapp.com";
 
 function NavBar(props) {
-  const { user } = useContext(AuthContext);
-  const [loggedOut, setLoggedOut] = useState(false);
-
-  const logout = () => {
-    localStorage.removeItem("authToken");
-    setLoggedOut(true);
-  };
-
+  const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
   return (
     <div>
       <Navbar bg="dark" variant="dark">
@@ -33,16 +26,19 @@ function NavBar(props) {
           </Navbar.Brand>
           <Navbar.Toggle />
           <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="/acquarium">Acquariums</Nav.Link>
+          {isLoggedIn && <Nav.Link href="/acquarium">Acquariums</Nav.Link>}
+
           <Navbar.Collapse className="justify-content-end">
             <Navbar.Text>
-              {user && (
+              {isLoggedIn && (
                 <p>
-                  Signed in as: <a href="#login">{user.email}</a>{" "}
-                  <Button className="bg-light text-black">Logout</Button>
+                  Signed in as: <a href="#login">{user.username}</a>{" "}
+                  <Button className="bg-light text-black" onClick={logOutUser}>
+                    Logout
+                  </Button>
                 </p>
               )}{" "}
-              {!user && (
+              {!isLoggedIn && (
                 <div>
                   <Link to={`/login`}>
                     <Button>Login</Button>
@@ -52,9 +48,6 @@ function NavBar(props) {
                   </Link>
                 </div>
               )}
-              <Button className="bg-light text-black" onClick={logout}>
-                Logout
-              </Button>
             </Navbar.Text>
           </Navbar.Collapse>
         </Container>
