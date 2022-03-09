@@ -192,7 +192,7 @@ function AddLogPage(props) {
                       onChange={(e) => setComments(Number(e.target.value))}
                       className="form-control"
                     />
-                    <Button type="submit" className="mt-2">
+                    <Button type="submit" className="btn btn-light mt-2">
                       Submit
                     </Button>
                     {errorMessage && (

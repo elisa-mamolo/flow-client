@@ -72,7 +72,9 @@ function AddAcquarium(props) {
                 className="form-control"
               />
 
-              <Button type="submit">Submit</Button>
+              <Button type="submit" className="btn btn-light mt-3">
+                Submit
+              </Button>
               {errorMessage && <p className="error-message">{errorMessage}</p>}
             </Form.Group>
           </Form>
