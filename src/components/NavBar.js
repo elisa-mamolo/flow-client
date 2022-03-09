@@ -11,7 +11,7 @@ function NavBar(props) {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
   return (
     <div>
-      <Navbar bg="dark" variant="dark">
+      <Navbar className="navbar  navbar-dark bg-dark" variant="dark">
         <Container>
           <Image
             src={LogoImage}
