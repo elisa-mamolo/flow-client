@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Button, Card, Table } from "react-bootstrap";
+
 import NavBar from "../components/NavBar";
 
 function HomePage(props) {
@@ -13,8 +13,12 @@ function HomePage(props) {
               <div className="card cardhome blue-gradient">
                 {/* <img src="..." className="card-img-top" alt="..." /> */}
                 <div className="card-body">
+                  <br></br>
                   <h5 className="card-title">Acquariums</h5>
-                  <p className="card-text"></p>
+                  <br></br>
+                  <p className="card-text text-white">
+                    Check your acquarium and input your daily logs
+                  </p>
                 </div>
                 <svg
                   id="wave"
@@ -36,8 +40,12 @@ function HomePage(props) {
               <div className="card cardhome blue-gradient">
                 {/* <img src="..." className="card-img-top" alt="..." /> */}
                 <div className="card-body">
+                  <br></br>
                   <h5 className="card-title">About Us</h5>
-                  <p className="card-text"></p>
+                  <br></br>
+                  <p className="card-text text-white">
+                    Read about what we do and discover more about us
+                  </p>
                 </div>
                 <svg
                   id="wave"
@@ -59,8 +67,12 @@ function HomePage(props) {
               <div className="card cardhome blue-gradient">
                 {/* <img src="..." className="card-img-top" alt="..." /> */}
                 <div className="card-body">
+                  <br></br>
                   <h5 className="card-title">Reef Learn</h5>
-                  <p className="card-text"></p>
+                  <br></br>
+                  <p className="card-text text-white">
+                    Read our daily content and learn more about reef keeping
+                  </p>
                 </div>
                 <svg
                   id="wave"

@@ -4,6 +4,7 @@ import axios from "axios";
 import { Navbar, Container, Button, Nav, Image } from "react-bootstrap";
 import { AuthContext } from "../context/auth.context";
 //import LogoImage from "../waveicon.png";
+
 const API_URL = "https://flow-acquarium-app.herokuapp.com";
 
 function NavBar(props) {
@@ -37,7 +38,6 @@ function NavBar(props) {
             <Navbar.Text>
               {isLoggedIn && (
                 <p>
-                  Signed in as:
                   <Button
                     className="bg-light text-black btn-light"
                     onClick={logOutUser}
@@ -49,7 +49,7 @@ function NavBar(props) {
               {!isLoggedIn && (
                 <div>
                   <Link to={`/login`}>
-                    <Button className="btn-light">Login</Button>
+                    <Button className="btn-light mr-2">Login</Button>
                   </Link>
                   <Link to={`/signup`}>
                     <Button className="btn-light">Signup</Button>

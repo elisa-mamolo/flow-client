@@ -1,8 +1,7 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import axios from "axios";
-import { AuthContext } from "../context/auth.context";
 import { useParams, useNavigate } from "react-router-dom";
-import { Button, Form, Navbar } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import NavBarComponent from "../components/NavBar";
 const API_URL = "https://flow-acquarium-app.herokuapp.com";
 
@@ -76,12 +75,13 @@ function AddLogPage(props) {
   return (
     <section className="background">
       <NavBarComponent></NavBarComponent>
-
+      <div className="alert alert-primary" role="alert">
+        <h4 className="titles">Add Log for: {acquarium.name}</h4>
+      </div>
       <div className="LoginPage mt-2">
         <div className="container h-100 w-50 ">
           <div className="row d-flex justify-content-center">
             <div className="col-12 col-md-8 col-lg-6 col-xl-5 text-white pt-5 pb-5">
-              <h3 className="title">Add Log for {acquarium.name}</h3>
               <Form onSubmit={handleSubmit}>
                 <div class="row">
                   <div class="col">

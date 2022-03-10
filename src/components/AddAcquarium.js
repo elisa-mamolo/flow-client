@@ -1,7 +1,7 @@
 // src/components/AddProject.js
 
 import { useState, useContext } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import { Button, Form } from "react-bootstrap";
@@ -17,7 +17,6 @@ function AddAcquarium(props) {
   const { user } = useContext(AuthContext);
 
   const [errorMessage, setErrorMessage] = useState(undefined);
-  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     //prevent rerendering
@@ -44,42 +43,50 @@ function AddAcquarium(props) {
     <div className="AddAcquarium">
       <div className="col">
         <div className="text-white">
-          <h3 className="title">Add Acquarium</h3>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group>
-              <Form.Label>Name:</Form.Label>
-              <input
-                type="text"
-                name="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="form-control"
-              />
+          <div className="container h-100 w-50 ">
+            <div className="row d-flex justify-content-center">
+              <div className="col-12 col-md-8 col-lg-6 col-xl-5 text-white pt-5 pb-5">
+                <h3 className="title">Add Acquarium</h3>
+                <Form onSubmit={handleSubmit}>
+                  <Form.Group>
+                    <Form.Label>Name:</Form.Label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      className="form-control"
+                    />
 
-              <Form.Label>Liters:</Form.Label>
-              <input
-                type="number"
-                name="liters"
-                value={liters}
-                onChange={(e) => setLiters(e.target.value)}
-                className="form-control"
-              />
+                    <Form.Label>Liters:</Form.Label>
+                    <input
+                      type="number"
+                      name="liters"
+                      value={liters}
+                      onChange={(e) => setLiters(e.target.value)}
+                      className="form-control"
+                    />
 
-              <Form.Label>Start Date:</Form.Label>
-              <input
-                type="date"
-                name="started"
-                value={started}
-                onChange={(e) => setStarted(e.target.value)}
-                className="form-control"
-              />
+                    <Form.Label>Start Date:</Form.Label>
+                    <input
+                      type="date"
+                      name="started"
+                      value={started}
+                      onChange={(e) => setStarted(e.target.value)}
+                      className="form-control"
+                    />
 
-              <Button type="submit" className="btn btn-light mt-3">
-                Submit
-              </Button>
-              {errorMessage && <p className="error-message">{errorMessage}</p>}
-            </Form.Group>
-          </Form>
+                    <Button type="submit" className="btn btn-light mt-3">
+                      Submit
+                    </Button>
+                    {errorMessage && (
+                      <p className="error-message">{errorMessage}</p>
+                    )}
+                  </Form.Group>
+                </Form>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

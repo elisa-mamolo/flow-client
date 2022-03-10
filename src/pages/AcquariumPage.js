@@ -52,66 +52,77 @@ function AcquariumPage(props) {
   return (
     <section className="background">
       <NavBar />
-
       {
         (acquariums,
         isLoggedIn && (
           <div>
-            <h1 className="titles">Your Acquariums</h1>
-            <Container>
-              <Row xs={1} md={4} lg={12}>
-                <Col>
-                  <Button onClick={() => handleTableVisibility()}>
-                    Add Acquarium
-                  </Button>
-                </Col>
-                <Col>
-                  {acquariums.map((item) => (
-                    <Link to={`/log/${item._id}`}>
-                      <div key={item._id} className="gradientColor">
-                        <Card style={{ width: "18rem" }}>
-                          <Card.Img
-                            variant="top"
-                            src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBwgIDQcIBwgIDQ0ICAcHBw8IDQgNFREWFhURFRMYHSggGBolGxMTITEhJSkrPi4uFx8zODMtQygtNSsBCgoKBgYFDg8PDisZExkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIALgBEwMBIgACEQEDEQH/xAAWAAEBAQAAAAAAAAAAAAAAAAAAAQf/xAAdEAEAAQQDAQAAAAAAAAAAAAAAEQEhQWFRofGB/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AMNAAAAAAAAAAAAAAAAAAWtZ2gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuN8oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuJ6QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABa2zM3sgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALiZ+cggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALSk+wCAAAAAAAAAAAAAAAAAAqAAAAAAAAptAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAf/9k="
-                          />
-                          <Card.Body>
-                            <Card.Title>{item.name}</Card.Title>
-                            <Card.Text>
-                              Started:{" "}
-                              {Moment(item.started).format("d MMM YYYY")}
-                            </Card.Text>
-                            <Card.Text>Liters: {item.liters}</Card.Text>
-
+            <div className="alert alert-primary" role="alert">
+              Your Acquariums
+              <br></br>
+              <Button
+                onClick={() => handleTableVisibility()}
+                className="btn-custom-color"
+              >
+                Add Acquarium
+              </Button>
+            </div>
+            {showAddAcquarium && (
+              <AddAcquarium
+                refreshAcquariums={(getAcquariums, handleTableVisibility)}
+              ></AddAcquarium>
+            )}
+            <div className="container">
+              <div className="row">
+                {acquariums.map((item) => (
+                  <div className="card-container col-sm-12 col-md-6 col-lg-4">
+                    <Link to={`/log/${item._id}`} key={item._id}>
+                      <div className="card-custom">
+                        <div className="card-img">
+                          <img src="https://content.invisioncic.com/Mnanoreef/monthly_2021_01/January-2021-Featured-Reef-Profile-FTS.jpg.355629df8744c3da4e829bfc26bd05bc.jpg" />
+                        </div>
+                        <div className="card-content">
+                          <h2 className="big-title">{item.name}</h2>
+                          <h3 className="medium-title">
+                            Started: {Moment(item.started).format("d MMM YYYY")}
+                          </h3>
+                          <h3 className="medium-title">
+                            Liters: {item.liters}
+                          </h3>
+                          <div className="d-flex justify-content-around mt-3 button-holder">
                             <Link to={`/edit-acquarium/${item._id}`}>
-                              <Button>Edit</Button>
+                              <Button className="mt-2 btn-custom-color">
+                                Edit
+                              </Button>
                             </Link>
-                            <Button onClick={() => deleteAcquarium(item._id)}>
+                            <Button
+                              onClick={() => deleteAcquarium(item._id)}
+                              className="mt-2 btn-custom-color"
+                            >
                               Delete
                             </Button>
-                            <br></br>
                             <Link to={`/addlog/${item._id}`}>
-                              <Button className="mt-2">Add Log</Button>
+                              <Button className="mt-2 btn-custom-color">
+                                + Log
+                              </Button>
+                            </Link>
+                            <Link to={`/log/${item._id}`}>
+                              <Button className="mt-2 btn-custom-color">
+                                Logs
+                              </Button>
                             </Link>
                             <Link to={`/charts/${item._id}`}>
-                              <Button className="mt-2">Charts</Button>
+                              <Button className="mt-2 btn-custom-color">
+                                Charts
+                              </Button>
                             </Link>
-                          </Card.Body>
-                        </Card>
+                          </div>
+                        </div>
                       </div>
                     </Link>
-                  ))}
-                </Col>
-                <Col>
-                  <div>
-                    {showAddAcquarium && (
-                      <AddAcquarium
-                        refreshAcquariums={getAcquariums}
-                      ></AddAcquarium>
-                    )}
                   </div>
-                </Col>
-              </Row>
-            </Container>
+                ))}
+              </div>
+            </div>
           </div>
         ))
       }

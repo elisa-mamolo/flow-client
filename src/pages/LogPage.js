@@ -1,16 +1,18 @@
 import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
-import { Button, Form, FormCheck, Label, Table } from "react-bootstrap";
+import { Link, useParams } from "react-router-dom";
+import { Table } from "react-bootstrap";
 import NavBarComponent from "../components/NavBar";
 import LogRow from "../components/LogRow";
+
 const API_URL = "https://flow-acquarium-app.herokuapp.com";
+
 function LogPage(props) {
   const [acquarium, setAcquarium] = useState([]);
   const [data, setData] = useState([]);
   const { id } = useParams();
-  const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+  const { isLoggedIn } = useContext(AuthContext);
 
   useEffect(() => {
     const getAcquariums = () => {
@@ -57,32 +59,41 @@ function LogPage(props) {
         (acquarium,
         isLoggedIn && (
           <div>
-            <Table striped bordered hover>
-              <tbody className="tableStyle">
-                <tr>
-                  <th>Date</th>
-                  <th>Alkalinity</th>
-                  <th>Ammonia</th>
-                  <th>Calcium</th>
-                  <th>Magnesium</th>
-                  <th>Nitrate</th>
-                  <th>Nitrite</th>
-                  <th>Ph</th>
-                  <th>Phosphate</th>
-                  <th>Salinity</th>
-                  <th>Temperature</th>
-                  <th>Actions</th>
-                </tr>
-                {data.map((log) => (
-                  <LogRow
-                    logRow={data}
-                    logRowAcquarium={acquarium}
-                    logRowId={acquarium.logs[0]._id}
-                    key={log._id}
-                  />
-                ))}
-              </tbody>
-            </Table>
+            <div className="alert alert-primary" role="alert">
+              Acquarium: {acquarium.name}
+              <br></br>
+              Click the table for seeing Charts
+            </div>
+            <div className="tableContainer">
+              <Link to={`/charts/${acquarium._id}`}>
+                <Table striped bordered hover>
+                  <tbody className="tableStyle">
+                    <tr>
+                      <th>Date</th>
+                      <th>Alkalinity</th>
+                      <th>Ammonia</th>
+                      <th>Calcium</th>
+                      <th>Magnesium</th>
+                      <th>Nitrate</th>
+                      <th>Nitrite</th>
+                      <th>Ph</th>
+                      <th>Phosphate</th>
+                      <th>Salinity</th>
+                      <th>Temperature</th>
+                      <th>Actions</th>
+                    </tr>
+                    {data.map((log) => (
+                      <LogRow
+                        logRow={data}
+                        logRowAcquarium={acquarium}
+                        logRowId={acquarium.logs[0]._id}
+                        key={log._id}
+                      />
+                    ))}
+                  </tbody>
+                </Table>
+              </Link>
+            </div>
           </div>
         ))
       }
