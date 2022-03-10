@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import { Button, Form, Navbar } from "react-bootstrap";
 import NavBarComponent from "../components/NavBar";
-
 const API_URL = "https://flow-acquarium-app.herokuapp.com";
 
 function LoginPage(props) {

@@ -7,7 +7,6 @@ import Moment from "moment";
 import { Button, Card, Container, Table, Row, Col } from "react-bootstrap";
 import NavBar from "../components/NavBar";
 import { AuthContext } from "../context/auth.context";
-
 const API_URL = "https://flow-acquarium-app.herokuapp.com";
 
 function AcquariumPage(props) {
@@ -17,21 +16,22 @@ function AcquariumPage(props) {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const getAcquariums = () => {
-      // Get the token from the localStorage
-      const storedToken = localStorage.getItem("authToken");
+  const getAcquariums = () => {
+    // Get the token from the localStorage
+    const storedToken = localStorage.getItem("authToken");
 
-      // Send the token through the request "Authorization" Headers
-      axios
-        .get(`${API_URL}/acquarium?userid=${user._id}`, {
-          headers: { Authorization: `Bearer ${storedToken}` },
-        })
-        .then((response) => {
-          setAcquariums(response.data);
-        })
-        .catch((error) => console.log(error));
-    };
+    // Send the token through the request "Authorization" Headers
+    axios
+      .get(`${API_URL}/acquarium?userid=${user._id}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        setAcquariums(response.data);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  useEffect(() => {
     getAcquariums();
   }, []);
 
@@ -44,17 +44,7 @@ function AcquariumPage(props) {
       .catch((err) => console.log(err));
   };
 
-  function setShowLogHandler() {
-    if (showAddAcquarium) {
-      setShowAddAcquarium(!showAddAcquarium);
-    }
-    setShowlog(!showlog);
-  }
-
   function handleTableVisibility() {
-    if (showlog) {
-      setShowLogHandler();
-    }
     setShowAddAcquarium(!showAddAcquarium);
   }
 
@@ -78,10 +68,7 @@ function AcquariumPage(props) {
                   {acquariums.map((item) => (
                     <Link to={`/log/${item._id}`}>
                       <div key={item._id} className="gradientColor">
-                        <Card
-                          style={{ width: "18rem" }}
-                          onClick={setShowLogHandler}
-                        >
+                        <Card style={{ width: "18rem" }}>
                           <Card.Img
                             variant="top"
                             src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBwgIDQcIBwgIDQ0ICAcHBw8IDQgNFREWFhURFRMYHSggGBolGxMTITEhJSkrPi4uFx8zODMtQygtNSsBCgoKBgYFDg8PDisZExkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIALgBEwMBIgACEQEDEQH/xAAWAAEBAQAAAAAAAAAAAAAAAAAAAQf/xAAdEAEAAQQDAQAAAAAAAAAAAAAAEQEhQWFRofGB/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AMNAAAAAAAAAAAAAAAAAAWtZ2gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuN8oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuJ6QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABa2zM3sgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALiZ+cggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALSk+wCAAAAAAAAAAAAAAAAAAqAAAAAAAAptAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAf/9k="
@@ -114,7 +101,13 @@ function AcquariumPage(props) {
                   ))}
                 </Col>
                 <Col>
-                  <div>{showAddAcquarium && <AddAcquarium></AddAcquarium>}</div>
+                  <div>
+                    {showAddAcquarium && (
+                      <AddAcquarium
+                        refreshAcquariums={getAcquariums}
+                      ></AddAcquarium>
+                    )}
+                  </div>
                 </Col>
               </Row>
             </Container>
