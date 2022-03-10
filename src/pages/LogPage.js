@@ -30,7 +30,7 @@ function LogPage(props) {
           let logsArray = response.data.logs;
           logsArray.forEach((obj) => {
             Object.keys(obj).forEach((key) => {
-              console.log(logsArray);
+              //console.log(logsArray);
               if (key === "measurements") {
                 obj[key].forEach((value) => {
                   dataArray.push(value);
