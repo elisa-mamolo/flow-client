@@ -4,7 +4,7 @@ import axios from "axios";
 import { Button, Form } from "react-bootstrap";
 import NavBar from "../components/NavBar";
 
-const API_URL = "https://flow-acquarium-app.herokuapp.com";
+const API_URL = process.env.SERVER || "http://localhost:5005";
 
 function SignupPage(props) {
   const [email, setEmail] = useState("");

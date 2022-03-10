@@ -5,7 +5,7 @@ import { AuthContext } from "../context/auth.context";
 import { Button, Form, Navbar } from "react-bootstrap";
 import NavBarComponent from "../components/NavBar";
 
-const API_URL = "https://flow-acquarium-app.herokuapp.com";
+const API_URL = process.env.SERVER || "http://localhost:5005";
 
 function LoginPage(props) {
   const [email, setEmail] = useState("");

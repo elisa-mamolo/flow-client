@@ -2,37 +2,91 @@ import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
-
-import { Button, Form, FormCheck, Label } from "react-bootstrap";
+import { Button, Form, FormCheck, Label, Table } from "react-bootstrap";
 import NavBarComponent from "../components/NavBar";
+import LogRow from "../components/LogRow";
 
-const API_URL = "https://flow-acquarium-app.herokuapp.com";
+const API_URL = process.env.SERVER || "http://localhost:5005";
 function LogPage(props) {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const { logid, acquariumid } = useParams();
-  const [log, setLog] = useState(logid);
+  const [acquarium, setAcquarium] = useState([]);
+  const [data, setData] = useState([]);
+  const { id } = useParams();
+  const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   useEffect(() => {
-    const getLog = () => {
+    const getAcquariums = () => {
+      // Get the token from the localStorage
+      const storedToken = localStorage.getItem("authToken");
+
       // Send the token through the request "Authorization" Headers
       axios
-        .get(`${API_URL}/log/${logid}`)
+        .get(`${API_URL}/acquarium/${id}`, {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        })
         .then((response) => {
-          console.log(response);
-          setLog(response);
+          let dataArray = [];
+          setAcquarium(response.data);
+          let logsArray = response.data.logs;
+          logsArray.forEach((obj) => {
+            Object.keys(obj).forEach((key) => {
+              console.log(logsArray);
+              if (key === "measurements") {
+                obj[key].forEach((value) => {
+                  dataArray.push(value);
+                });
+              }
+            });
+          });
+          setData(dataArray);
         })
         .catch((error) => console.log(error));
     };
-    getLog();
+    getAcquariums();
   }, []);
 
   return (
     <section className="background">
       <NavBarComponent />
-      <div className="alert alert-primary" role="alert">
-        This is a primary alert—check it out!
-      </div>
+
+      {!isLoggedIn && (
+        <div className="alert alert-danger" role="alert">
+          Log in to see logs!
+        </div>
+      )}
+
+      {
+        (acquarium,
+        isLoggedIn && (
+          <div>
+            <Table striped bordered hover>
+              <tbody className="tableStyle">
+                <tr>
+                  <th>Date</th>
+                  <th>Alkalinity</th>
+                  <th>Ammonia</th>
+                  <th>Calcium</th>
+                  <th>Magnesium</th>
+                  <th>Nitrate</th>
+                  <th>Nitrite</th>
+                  <th>Ph</th>
+                  <th>Phosphate</th>
+                  <th>Salinity</th>
+                  <th>Temperature</th>
+                  <th>Actions</th>
+                </tr>
+                {data.map((log) => (
+                  <LogRow
+                    logRow={data}
+                    logRowAcquarium={acquarium}
+                    logRowId={acquarium.logs[0]._id}
+                    key={log._id}
+                  />
+                ))}
+              </tbody>
+            </Table>
+          </div>
+        ))
+      }
 
       <div className="wave wave1"></div>
       <div className="wave wave2"></div>

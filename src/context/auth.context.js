@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-const API_URL = "https://flow-acquarium-app.herokuapp.com";
+const API_URL = process.env.SERVER || "http://localhost:5005";
 
 const AuthContext = React.createContext();
 

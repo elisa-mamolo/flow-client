@@ -5,7 +5,7 @@ import { Navbar, Container, Button, Nav, Image } from "react-bootstrap";
 import { AuthContext } from "../context/auth.context";
 //import LogoImage from "../waveicon.png";
 
-const API_URL = "https://flow-acquarium-app.herokuapp.com";
+const API_URL = process.env.SERVER || "http://localhost:5005";
 
 function NavBar(props) {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
@@ -21,15 +21,15 @@ function NavBar(props) {
             alt="logo"
           /> */}
 
-          <Navbar.Brand to="/" className=" text-white">
+          <Navbar.Brand href="/" className=" text-white">
             Flow
           </Navbar.Brand>
           <Navbar.Toggle />
-          <Nav.Link to="/" className="text-white">
+          <Nav.Link href="/" className="text-white">
             Home
           </Nav.Link>
           {isLoggedIn && (
-            <Nav.Link to="/acquarium" className="text-white">
+            <Nav.Link href="/acquarium" className="text-white">
               Acquariums
             </Nav.Link>
           )}

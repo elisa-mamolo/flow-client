@@ -5,7 +5,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Button, Form, FormCheck, FormLabel } from "react-bootstrap";
 import NavBar from "../components/NavBar";
 
-const API_URL = "https://flow-acquarium-app.herokuapp.com";
+const API_URL = process.env.SERVER || "http://localhost:5005";
 
 function EditAcquariumPage(props) {
   const [name, setName] = useState("");

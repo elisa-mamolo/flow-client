@@ -24,7 +24,7 @@ import {
 
 const data = [];
 
-const API_URL = "https://flow-acquarium-app.herokuapp.com";
+const API_URL = process.env.SERVER || "http://localhost:5005";
 
 function Charts(props) {
   const { id } = useParams();
