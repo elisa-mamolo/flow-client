@@ -2,7 +2,9 @@ import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import { useParams, useNavigate } from "react-router-dom";
-import { Button } from "react-bootstrap";
+
+import { Button, Form, FormCheck, Label } from "react-bootstrap";
+import NavBarComponent from "../components/NavBar";
 
 const API_URL = "https://flow-acquarium-app.herokuapp.com";
 
@@ -90,103 +92,142 @@ function EditLogPage(props) {
   };
 
   return (
-    <div className="AddAcquarium">
-      <h3>Edit Log</h3>
+    <section className="background">
+      <NavBarComponent></NavBarComponent>
 
-      <form onSubmit={handleSubmit}>
-        <label>Date:</label>
-        <input
-          type="date"
-          name="timestamp"
-          value={timestamp}
-          onChange={(e) => setTimestamp(e.target.value)}
-        />
-        <label>Ph:</label>
-        <input
-          type="number"
-          name="ph"
-          value={ph}
-          onChange={(e) => setPh(Number(e.target.value))}
-        />
+      <div className="mt-5">
+        <div className="container h-100 w-50 ">
+          <div className="row d-flex justify-content-center">
+            <div className="col-12 col-md-8 col-lg-6 col-xl-5 text-white pt-5 pb-5">
+              <h3 className="text-white">Edit Log</h3>
 
-        <label>Temperature:</label>
-        <input
-          type="number"
-          name="temperature"
-          value={temperature}
-          onChange={(e) => setTemperature(Number(e.target.value))}
-        />
+              <Form onSubmit={handleSubmit}>
+                <div class="row">
+                  <div class="col">
+                    <Form.Group>
+                      <Form.Label>Date:</Form.Label>
+                      <input
+                        type="date"
+                        name="timestamp"
+                        value={timestamp}
+                        onChange={(e) => setTimestamp(e.target.value)}
+                        className="form-control"
+                      />
+                      <Form.Label>Ph:</Form.Label>
+                      <input
+                        type="number"
+                        name="ph"
+                        value={ph}
+                        onChange={(e) => setPh(Number(e.target.value))}
+                        className="form-control"
+                      />
 
-        <label>Ammonia:</label>
-        <input
-          type="number"
-          name="ammonia"
-          value={ammonia}
-          onChange={(e) => setAmmonia(Number(e.target.value))}
-        />
+                      <Form.Label>Temperature:</Form.Label>
+                      <input
+                        type="number"
+                        name="temperature"
+                        value={temperature}
+                        onChange={(e) => setTemperature(Number(e.target.value))}
+                        className="form-control"
+                      />
 
-        <label>Nitrite:</label>
-        <input
-          type="number"
-          name="nitrite"
-          value={nitrite}
-          onChange={(e) => setNitrite(Number(e.target.value))}
-        />
+                      <Form.Label>Ammonia:</Form.Label>
+                      <input
+                        type="number"
+                        name="ammonia"
+                        value={ammonia}
+                        onChange={(e) => setAmmonia(Number(e.target.value))}
+                        className="form-control"
+                      />
 
-        <label>Nitrate:</label>
-        <input
-          type="number"
-          name="nitrate"
-          value={nitrate}
-          onChange={(e) => setNitrate(Number(e.target.value))}
-        />
-        <label>Phosphate:</label>
-        <input
-          type="number"
-          name="phosphate"
-          value={phosphate}
-          onChange={(e) => setPhosphate(Number(e.target.value))}
-        />
-        <label>Salinity:</label>
-        <input
-          type="number"
-          name="salinity"
-          value={salinity}
-          onChange={(e) => setSalinity(Number(e.target.value))}
-        />
-        <label>Alkalinity:</label>
-        <input
-          type="number"
-          name="alkalinity"
-          value={alkalinity}
-          onChange={(e) => setAlkalinity(Number(e.target.value))}
-        />
-        <label>Calcium:</label>
-        <input
-          type="number"
-          name="calcium"
-          value={calcium}
-          onChange={(e) => setCalcium(Number(e.target.value))}
-        />
-        <label>Magnesium:</label>
-        <input
-          type="number"
-          name="magnesium"
-          value={magnesium}
-          onChange={(e) => setMagnesium(Number(e.target.value))}
-        />
-        <label>Comment:</label>
-        <input
-          type="text"
-          name="comments"
-          value={comments}
-          onChange={(e) => setComments(Number(e.target.value))}
-        />
+                      <Form.Label>Nitrite:</Form.Label>
+                      <input
+                        type="number"
+                        name="nitrite"
+                        value={nitrite}
+                        onChange={(e) => setNitrite(Number(e.target.value))}
+                        className="form-control"
+                      />
 
-        <Button type="submit">Submit</Button>
-      </form>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-    </div>
+                      <Form.Label>Nitrate:</Form.Label>
+                      <input
+                        type="number"
+                        name="nitrate"
+                        value={nitrate}
+                        onChange={(e) => setNitrate(Number(e.target.value))}
+                        className="form-control"
+                      />
+                    </Form.Group>
+                  </div>
+                  <div class="col">
+                    <Form.Label>Phosphate:</Form.Label>
+                    <input
+                      type="number"
+                      name="phosphate"
+                      value={phosphate}
+                      onChange={(e) => setPhosphate(Number(e.target.value))}
+                      className="form-control"
+                    />
+                    <Form.Label>Salinity:</Form.Label>
+                    <input
+                      type="number"
+                      name="salinity"
+                      value={salinity}
+                      onChange={(e) => setSalinity(Number(e.target.value))}
+                      className="form-control"
+                    />
+                    <Form.Label>Alkalinity:</Form.Label>
+                    <input
+                      type="number"
+                      name="alkalinity"
+                      value={alkalinity}
+                      onChange={(e) => setAlkalinity(Number(e.target.value))}
+                      className="form-control"
+                    />
+                    <Form.Label>Calcium:</Form.Label>
+                    <input
+                      type="number"
+                      name="calcium"
+                      value={calcium}
+                      onChange={(e) => setCalcium(Number(e.target.value))}
+                      className="form-control"
+                    />
+                    <Form.Label>Magnesium:</Form.Label>
+                    <input
+                      type="number"
+                      name="magnesium"
+                      value={magnesium}
+                      onChange={(e) => setMagnesium(Number(e.target.value))}
+                      className="form-control"
+                    />
+                    <Form.Label>Comment:</Form.Label>
+                    <input
+                      type="text"
+                      name="comments"
+                      value={comments}
+                      onChange={(e) => setComments(Number(e.target.value))}
+                      className="form-control"
+                    />
+                  </div>
+
+                  <div className="col">
+                    <br></br>
+                    <Button type="submit">Submit</Button>
+                    {errorMessage && (
+                      <p className="error-message">{errorMessage}</p>
+                    )}
+                  </div>
+                </div>
+              </Form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wave wave1"></div>
+      <div class="wave wave2"></div>
+      <div class="wave wave3"></div>
+      <div class="wave wave4"></div>
+    </section>
   );
 }
 

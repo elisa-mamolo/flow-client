@@ -40,46 +40,44 @@ function AddAcquarium(props) {
 
   return (
     <div className="AddAcquarium">
-      <div className="LoginPage mt-5">
-        <div className="container h-100 w-50 ">
-          <div className="row d-flex justify-content-center bg-dark ">
-            <div className="col-12 col-md-8 col-lg-6 col-xl-5 text-white pt-5 pb-5">
-              <h3 className="title">Add Acquarium</h3>
+      <div className="col">
+        <div className="text-white">
+          <h3 className="title">Add Acquarium</h3>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group>
+              <Form.Label>Name:</Form.Label>
+              <input
+                type="text"
+                name="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="form-control"
+              />
 
-              <Form onSubmit={handleSubmit}>
-                <Form.Group>
-                  <Form.Label>Name:</Form.Label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
+              <Form.Label>Liters:</Form.Label>
+              <input
+                type="number"
+                name="liters"
+                value={liters}
+                onChange={(e) => setLiters(e.target.value)}
+                className="form-control"
+              />
 
-                  <Form.Label>Liters:</Form.Label>
-                  <input
-                    type="number"
-                    name="liters"
-                    value={liters}
-                    onChange={(e) => setLiters(e.target.value)}
-                  />
+              <Form.Label>Start Date:</Form.Label>
+              <input
+                type="date"
+                name="started"
+                value={started}
+                onChange={(e) => setStarted(e.target.value)}
+                className="form-control"
+              />
 
-                  <Form.Label>Start Date:</Form.Label>
-                  <input
-                    type="date"
-                    name="started"
-                    value={started}
-                    onChange={(e) => setStarted(e.target.value)}
-                  />
-
-                  <Button type="submit">Submit</Button>
-                  {errorMessage && (
-                    <p className="error-message">{errorMessage}</p>
-                  )}
-                </Form.Group>
-              </Form>
-            </div>
-          </div>
+              <Button type="submit" className="btn btn-light mt-3">
+                Submit
+              </Button>
+              {errorMessage && <p className="error-message">{errorMessage}</p>}
+            </Form.Group>
+          </Form>
         </div>
       </div>
     </div>

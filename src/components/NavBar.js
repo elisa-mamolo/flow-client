@@ -3,58 +3,60 @@ import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import { Navbar, Container, Button, Nav, Image } from "react-bootstrap";
 import { AuthContext } from "../context/auth.context";
-import LogoImage from "../waveicon.png";
+//import LogoImage from "../waveicon.png";
 
 const API_URL = "https://flow-acquarium-app.herokuapp.com";
 
 function NavBar(props) {
-  const { user } = useContext(AuthContext);
-  const [loggedOut, setLoggedOut] = useState(false);
-
-  const logout = () => {
-    localStorage.removeItem("authToken");
-    setLoggedOut(true);
-  };
-
+  const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
   return (
     <div>
-      <Navbar bg="dark" variant="dark">
+      <Navbar className="navbar  navbar-dark bg-dark" variant="dark">
         <Container>
-          <Image
+          {/* <Image
             src={LogoImage}
             width="50"
             height="50"
             className="d-inline-block align-top"
             alt="logo"
-          />
+          /> */}
 
-          <Navbar.Brand href="/" className="ml-5">
+          <Navbar.Brand href="/" className=" text-white">
             Flow
           </Navbar.Brand>
           <Navbar.Toggle />
-          <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="/acquarium">Acquariums</Nav.Link>
+          <Nav.Link href="/" className="text-white">
+            Home
+          </Nav.Link>
+          {isLoggedIn && (
+            <Nav.Link href="/acquarium" className="text-white">
+              Acquariums
+            </Nav.Link>
+          )}
+
           <Navbar.Collapse className="justify-content-end">
             <Navbar.Text>
-              {user && (
+              {isLoggedIn && (
                 <p>
-                  Signed in as: <a href="#login">{user.email}</a>{" "}
-                  <Button className="bg-light text-black">Logout</Button>
+                  Signed in as:
+                  <Button
+                    className="bg-light text-black btn-light"
+                    onClick={logOutUser}
+                  >
+                    Logout
+                  </Button>
                 </p>
               )}{" "}
-              {!user && (
+              {!isLoggedIn && (
                 <div>
                   <Link to={`/login`}>
-                    <Button>Login</Button>
+                    <Button className="btn-light">Login</Button>
                   </Link>
                   <Link to={`/signup`}>
-                    <Button>Signup</Button>
+                    <Button className="btn-light">Signup</Button>
                   </Link>
                 </div>
               )}
-              <Button className="bg-light text-black" onClick={logout}>
-                Logout
-              </Button>
             </Navbar.Text>
           </Navbar.Collapse>
         </Container>

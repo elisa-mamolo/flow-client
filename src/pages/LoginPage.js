@@ -38,17 +38,18 @@ function LoginPage(props) {
         navigate("/");
       })
       .catch((error) => {
-        const errorDescription = error.response.data.message;
-        setErrorMessage(errorDescription);
+        console.log(error);
+        //const errorDescription = error.response.data.message;
+        //setErrorMessage(errorDescription);
       });
   };
 
   return (
-    <div>
+    <section className="background">
       <NavBarComponent></NavBarComponent>
       <div className="LoginPage mt-5">
         <div className="container h-100 w-50 ">
-          <div className="row d-flex justify-content-center bg-dark ">
+          <div className="row d-flex justify-content-center">
             <div className="col-12 col-md-8 col-lg-6 col-xl-5 text-white pt-5 pb-5">
               <h3>Login</h3>
               <Form onSubmit={handleLoginSubmit}>
@@ -72,7 +73,7 @@ function LoginPage(props) {
                   />
                   <br></br>
 
-                  <Button type="submit" className="btn btn-primary">
+                  <Button type="submit" className="btn btn-light">
                     Login
                   </Button>
                 </div>
@@ -88,7 +89,11 @@ function LoginPage(props) {
           </div>
         </div>
       </div>
-    </div>
+      <div class="wave wave1"></div>
+      <div class="wave wave2"></div>
+      <div class="wave wave3"></div>
+      <div class="wave wave4"></div>
+    </section>
   );
 }
 

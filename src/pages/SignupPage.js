@@ -38,11 +38,11 @@ function SignupPage(props) {
   };
 
   return (
-    <div className="SignupPage">
+    <section className="background">
       <NavBar></NavBar>
       <div className="LoginPage mt-5">
         <div className="container h-100 w-50 ">
-          <div className="row d-flex justify-content-center bg-dark ">
+          <div className="row d-flex justify-content-center">
             <div className="col-12 col-md-8 col-lg-6 col-xl-5 text-white pt-5 pb-5">
               <Form onSubmit={handleSignupSubmit}>
                 <div className="form-group">
@@ -73,23 +73,26 @@ function SignupPage(props) {
                     onChange={handleUsername}
                     className="form-control"
                   />
+                  <br></br>
 
                   <Button type="submit">Sign Up</Button>
                 </div>
               </Form>
-
               {errorMessage && <p className="error-message">{errorMessage}</p>}
-
+              <br></br>
               <p>Already have account?</p>
               <Link to={"/login"} className="text-white">
-                {" "}
                 Login
               </Link>
             </div>
           </div>
         </div>
       </div>
-    </div>
+      <div className="wave wave1"></div>
+      <div className="wave wave2"></div>
+      <div className="wave wave3"></div>
+      <div className="wave wave4"></div>
+    </section>
   );
 }
 

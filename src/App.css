@@ -13,6 +13,10 @@
   }
 }
 
+.centered {
+  margin-top: 8%;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -31,6 +35,39 @@
 .titles {
   margin-top: 2%;
   margin-bottom: 2%;
+  color: white;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Oswald:300,400,700");
+
+/*style homepage cards*/
+.card-title {
+  color: white;
+  text-decoration: none;
+}
+
+.cardhome {
+  width: 250px;
+  height: 300px;
+  box-shadow: 11px 17px 48px #e5e5e5;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  background-image: linear-gradient(to right, #8e2de2, #4a00e0);
+}
+
+.background {
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(to right, #141e30, #243b55);
+}
+
+.gradientColor {
+  background-image: linear-gradient(to right, #141e30, #243b55);
+}
+
+.tableStyle {
+  background-color: white;
 }
 
 @keyframes App-logo-spin {
@@ -40,4 +77,84 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/*card waves*/
+#wave {
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  width: 100%;
+}
+
+#wave path {
+  fill: white;
+}
+
+/*wave animation taken from here: https://codepen.io/vkive/pen/yLzdmNW*/
+section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #3586ff;
+  overflow: hidden;
+}
+section .wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url(https://i.postimg.cc/YqcvK11W/wave.png);
+  background-size: 1000px 100px;
+}
+section .wave.wave1 {
+  animation: animate 30s linear infinite;
+  z-index: 1000;
+  opacity: 1;
+  animation-delay: 0s;
+  bottom: 0;
+}
+section .wave.wave2 {
+  animation: animate2 15s linear infinite;
+  z-index: 999;
+  opacity: 0.5;
+  animation-delay: -5s;
+  bottom: 10px;
+}
+section .wave.wave3 {
+  animation: animate3 30s linear infinite;
+  z-index: 998;
+  opacity: 0.2;
+  animation-delay: 2s;
+  bottom: 15px;
+}
+section .wave.wave4 {
+  animation: animate2 5s linear infinite;
+  z-index: 997;
+  opacity: 0.7;
+  animation-delay: -5s;
+  bottom: 10px;
+}
+@keyframes animate {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: 1000px;
+  }
+}
+@keyframes animate2 {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: -1000px;
+  }
+}
+
+/*recharts style*/
+.recharts-cartesian-axis-tick {
+  font-size: 1.1rem;
+  font-family: Roboto, sans-serif;
 }
