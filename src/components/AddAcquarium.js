@@ -5,7 +5,7 @@ import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import { Button, Form } from "react-bootstrap";
 
-const API_URL = process.env.SERVER || "http://localhost:5005";
+const API_URL = "https://flow-acquarium-app.herokuapp.com";
 
 function AddAcquarium(props) {
   const [name, setName] = useState("");

@@ -6,7 +6,7 @@ import { Button, Form, FormCheck, Label, Table } from "react-bootstrap";
 import NavBarComponent from "../components/NavBar";
 import LogRow from "../components/LogRow";
 
-const API_URL = process.env.SERVER || "http://localhost:5005";
+const API_URL = "https://flow-acquarium-app.herokuapp.com";
 function LogPage(props) {
   const [acquarium, setAcquarium] = useState([]);
   const [data, setData] = useState([]);

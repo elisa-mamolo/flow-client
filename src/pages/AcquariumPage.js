@@ -8,7 +8,7 @@ import { Button, Card, Container, Table, Row, Col } from "react-bootstrap";
 import NavBar from "../components/NavBar";
 import { AuthContext } from "../context/auth.context";
 
-const API_URL = process.env.SERVER || "http://localhost:5005";
+const API_URL = "https://flow-acquarium-app.herokuapp.com";
 
 function AcquariumPage(props) {
   const [acquariums, setAcquariums] = useState([]);

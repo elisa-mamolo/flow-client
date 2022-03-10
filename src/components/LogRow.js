@@ -4,7 +4,7 @@ import axios from "axios";
 import Moment from "moment";
 import { Button } from "react-bootstrap";
 
-const API_URL = process.env.SERVER || "http://localhost:5005";
+const API_URL = "https://flow-acquarium-app.herokuapp.com";
 
 function LogRow(props) {
   const navigate = useNavigate();

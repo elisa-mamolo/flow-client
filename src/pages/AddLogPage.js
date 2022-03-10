@@ -5,7 +5,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Button, Form, Navbar } from "react-bootstrap";
 import NavBarComponent from "../components/NavBar";
 
-const API_URL = process.env.SERVER || "http://localhost:5005";
+const API_URL = "https://flow-acquarium-app.herokuapp.com";
 
 function AddLogPage(props) {
   const navigate = useNavigate();

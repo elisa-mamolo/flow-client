@@ -5,7 +5,7 @@ import { Navbar, Container, Button, Nav, Image } from "react-bootstrap";
 import { AuthContext } from "../context/auth.context";
 //import LogoImage from "../waveicon.png";
 
-const API_URL = process.env.SERVER || "http://localhost:5005";
+const API_URL = "https://flow-acquarium-app.herokuapp.com";
 
 function NavBar(props) {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
