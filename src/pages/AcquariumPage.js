@@ -2,33 +2,34 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import AddAcquarium from "../components/AddAcquarium";
-import LogRow from "../components/LogRow";
 import Moment from "moment";
-import { Button, Card, Container, Table, Row, Col } from "react-bootstrap";
+import { Button, Card, Container, Row, Col } from "react-bootstrap";
 import NavBar from "../components/NavBar";
 import { AuthContext } from "../context/auth.context";
+
 const API_URL = "https://flow-acquarium-app.herokuapp.com";
 
 function AcquariumPage(props) {
   const [acquariums, setAcquariums] = useState([]);
-  const [showlog, setShowlog] = useState(false);
   const [showAddAcquarium, setShowAddAcquarium] = useState(false);
-  const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+  const { isLoggedIn, user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const getAcquariums = () => {
-    // Get the token from the localStorage
-    const storedToken = localStorage.getItem("authToken");
+    if (isLoggedIn) {
+      // Get the token from the localStorage
+      const storedToken = localStorage.getItem("authToken");
 
-    // Send the token through the request "Authorization" Headers
-    axios
-      .get(`${API_URL}/acquarium?userid=${user._id}`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
-      .then((response) => {
-        setAcquariums(response.data);
-      })
-      .catch((error) => console.log(error));
+      // Send the token through the request "Authorization" Headers
+      axios
+        .get(`${API_URL}/acquarium?userid=${user._id}`, {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        })
+        .then((response) => {
+          setAcquariums(response.data);
+        })
+        .catch((error) => console.log(error));
+    }
   };
 
   useEffect(() => {
