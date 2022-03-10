@@ -1,4 +1,3 @@
-import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Moment from "moment";
@@ -61,11 +60,12 @@ function LogRow(props) {
               <td>
                 <Link
                   to={`/edit-log/${props.logRowId}/${props.logRowAcquarium._id}`}
+                  className="btn-margin-right"
                 >
-                  <Button>Edit</Button>
+                  <Button className="mr-2 btn-custom-color">Edit</Button>
                 </Link>
                 <Button
-                  className="mt-2"
+                  className="btn-custom-color"
                   onClick={() =>
                     deleteLog(props.logRowId, props.logRowAcquarium._id)
                   }

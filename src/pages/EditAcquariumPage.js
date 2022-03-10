@@ -2,8 +2,9 @@ import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import { useParams, useNavigate } from "react-router-dom";
-import { Button, Form, FormCheck, FormLabel } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import NavBar from "../components/NavBar";
+
 const API_URL = "https://flow-acquarium-app.herokuapp.com";
 
 function EditAcquariumPage(props) {

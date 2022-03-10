@@ -1,10 +1,9 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { AuthContext } from "../context/auth.context";
 import { useParams, useNavigate } from "react-router-dom";
-
 import { Button, Form, FormCheck, Label } from "react-bootstrap";
 import NavBarComponent from "../components/NavBar";
+
 const API_URL = "https://flow-acquarium-app.herokuapp.com";
 
 function EditLogPage(props) {

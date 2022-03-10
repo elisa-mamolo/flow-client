@@ -1,12 +1,9 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
-import { useState, useEffect } from "react";
-import AddAcquarium from "../components/AddAcquarium";
-import LogRow from "../components/LogRow";
-import { Button, Card, Table } from "react-bootstrap";
-import NavBar from "../components/NavBar";
-import React, { PureComponent } from "react";
+import { useState, useEffect, useContext } from "react";
+import React from "react";
 import NavBarComponent from "../components/NavBar";
+import { AuthContext } from "../context/auth.context";
 import moment from "moment";
 
 import {
@@ -17,18 +14,17 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  ResponsiveContainer,
   BarChart,
   Bar,
 } from "recharts";
 
-const data = [];
 const API_URL = "https://flow-acquarium-app.herokuapp.com";
 
 function Charts(props) {
   const { id } = useParams();
   const [data, setData] = useState([]);
   const [acquarium, setAcquarium] = useState([]);
+  const { isLoggedIn } = useContext(AuthContext);
 
   function formatXAxis(item) {
     // If using moment.js
@@ -69,128 +65,140 @@ function Charts(props) {
   return (
     <section className="background">
       <NavBarComponent />
-      <h2 className="titles">Acquarium: {acquarium.name}</h2>
-      {data.length === 0 && <p>Add logs to see charts data</p>}
+
+      {data.length === 0 && (
+        <p className="text-white">Add logs to see charts data</p>
+      )}
+      {!isLoggedIn && (
+        <div className="alert alert-danger" role="alert">
+          Log in to see Charts!
+        </div>
+      )}
       {data.length > 0 && (
-        <div className="container centered">
-          <div className="row">
-            <div className="col-sm-12 col-md-6 col-lg-4">
-              <LineChart
-                width={500}
-                height={300}
-                data={data}
-                margin={{
-                  top: 5,
-                  right: 30,
-                  left: 20,
-                  bottom: 5,
-                }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis
-                  dataKey="timestamp"
-                  tick={{ fill: "rgba(255,255,255, 0.7)" }}
-                  tickFormatter={formatXAxis}
-                />
-                <YAxis tick={{ fill: "rgba(255,255,255, 0.7)" }} />
-                <Tooltip />
-                <Legend />
-                <Line
-                  type="monotone"
-                  dataKey="temperature"
-                  stroke="#8884d8"
-                  activeDot={{ r: 8 }}
-                />
-                <Line type="monotone" dataKey="ph" stroke="#82ca9d" />
-              </LineChart>
-            </div>
-            <div className="col-sm-12 col-md-6 col-lg-4">
-              <LineChart
-                width={500}
-                height={300}
-                data={data}
-                margin={{
-                  top: 5,
-                  right: 30,
-                  left: 20,
-                  bottom: 5,
-                }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis
-                  dataKey="timestamp"
-                  tickFormatter={formatXAxis}
-                  tick={{ fill: "rgba(255,255,255, 0.7)" }}
-                />
-                <YAxis tick={{ fill: "rgba(255,255,255, 0.7)" }} />
-                <Tooltip />
-                <Legend />
-                <Line
-                  type="monotone"
-                  dataKey="calcium"
-                  stroke="#8884d8"
-                  activeDot={{ r: 8 }}
-                />
-              </LineChart>
-            </div>
-            <div className="col-sm-12 col-md-6 col-lg-4">
-              <LineChart
-                width={500}
-                height={300}
-                data={data}
-                margin={{
-                  top: 5,
-                  right: 30,
-                  left: 20,
-                  bottom: 5,
-                }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis
-                  dataKey="timestamp"
-                  tickFormatter={formatXAxis}
-                  tick={{ fill: "rgba(255,255,255, 0.7)" }}
-                />
-                <YAxis tick={{ fill: "rgba(255,255,255, 0.7)" }} />
-                <Tooltip />
-                <Legend />
-                <Line
-                  type="monotone"
-                  dataKey="ph"
-                  stroke="#8884d8"
-                  activeDot={{ r: 8 }}
-                />
-              </LineChart>
-            </div>
-            <div className="col-sm-12 col-md-6 col-lg-4">
-              <BarChart
-                width={500}
-                height={300}
-                data={data}
-                margin={{
-                  top: 20,
-                  right: 30,
-                  left: 20,
-                  bottom: 5,
-                }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis
-                  dataKey="name"
-                  tick={{ fill: "rgba(255,255,255, 0.7)" }}
-                />
-                <YAxis
-                  yAxisId="left"
-                  orientation="left"
-                  stroke="#8884d8"
-                  tick={{ fill: "rgba(255,255,255, 0.7)" }}
-                />
-                <YAxis yAxisId="right" orientation="right" stroke="#82ca9d" />
-                <Tooltip />
-                <Legend />
-                <Bar yAxisId="left" dataKey="pv" fill="#8884d8" />
-                <Bar yAxisId="right" dataKey="uv" fill="#82ca9d" />
-              </BarChart>
+        <div>
+          <div className="alert alert-primary" role="alert">
+            <h4 className="titles">Acquarium: {acquarium.name}</h4>
+          </div>
+          <div className="container centered">
+            <div className="row">
+              <div className="col-sm-12 col-md-6 col-lg-4">
+                <LineChart
+                  width={500}
+                  height={300}
+                  data={data}
+                  margin={{
+                    top: 5,
+                    right: 30,
+                    left: 20,
+                    bottom: 5,
+                  }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis
+                    dataKey="timestamp"
+                    tick={{ fill: "rgba(255,255,255, 0.7)" }}
+                    tickFormatter={formatXAxis}
+                  />
+                  <YAxis tick={{ fill: "rgba(255,255,255, 0.7)" }} />
+                  <Tooltip />
+                  <Legend />
+                  <Line
+                    type="monotone"
+                    dataKey="temperature"
+                    stroke="#8884d8"
+                    activeDot={{ r: 8 }}
+                  />
+                  <Line type="monotone" dataKey="ph" stroke="#82ca9d" />
+                </LineChart>
+              </div>
+              <div className="col-sm-12 col-md-6 col-lg-4">
+                <LineChart
+                  width={500}
+                  height={300}
+                  data={data}
+                  margin={{
+                    top: 5,
+                    right: 30,
+                    left: 20,
+                    bottom: 5,
+                  }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis
+                    dataKey="timestamp"
+                    tickFormatter={formatXAxis}
+                    tick={{ fill: "rgba(255,255,255, 0.7)" }}
+                  />
+                  <YAxis tick={{ fill: "rgba(255,255,255, 0.7)" }} />
+                  <Tooltip />
+                  <Legend />
+                  <Line
+                    type="monotone"
+                    dataKey="calcium"
+                    stroke="#8884d8"
+                    activeDot={{ r: 8 }}
+                  />
+                </LineChart>
+              </div>
+              <div className="col-sm-12 col-md-6 col-lg-4">
+                <LineChart
+                  width={500}
+                  height={300}
+                  data={data}
+                  margin={{
+                    top: 5,
+                    right: 30,
+                    left: 20,
+                    bottom: 5,
+                  }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis
+                    dataKey="timestamp"
+                    tickFormatter={formatXAxis}
+                    tick={{ fill: "rgba(255,255,255, 0.7)" }}
+                  />
+                  <YAxis tick={{ fill: "rgba(255,255,255, 0.7)" }} />
+                  <Tooltip />
+                  <Legend />
+                  <Line
+                    type="monotone"
+                    dataKey="ph"
+                    stroke="#8884d8"
+                    activeDot={{ r: 8 }}
+                  />
+                </LineChart>
+              </div>
+              <div className="col-sm-12 col-md-6 col-lg-4">
+                <BarChart
+                  width={500}
+                  height={300}
+                  data={data}
+                  margin={{
+                    top: 20,
+                    right: 30,
+                    left: 20,
+                    bottom: 5,
+                  }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis
+                    dataKey="name"
+                    tick={{ fill: "rgba(255,255,255, 0.7)" }}
+                  />
+                  <YAxis
+                    yAxisId="left"
+                    orientation="left"
+                    stroke="#8884d8"
+                    tick={{ fill: "rgba(255,255,255, 0.7)" }}
+                  />
+                  <YAxis yAxisId="right" orientation="right" stroke="#82ca9d" />
+                  <Tooltip />
+                  <Legend />
+                  <Bar yAxisId="left" dataKey="pv" fill="#8884d8" />
+                  <Bar yAxisId="right" dataKey="uv" fill="#82ca9d" />
+                </BarChart>
+              </div>
             </div>
           </div>
         </div>
