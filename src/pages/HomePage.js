@@ -7,7 +7,7 @@ function HomePage(props) {
     <section className="background">
       <NavBar />
       <div className="container centered">
-        <div class="row">
+        <div className="row">
           <div className="col-sm-12 col-md-6 col-lg-4">
             <Link to={`/acquarium`}>
               <div className="card cardhome blue-gradient">
@@ -23,7 +23,7 @@ function HomePage(props) {
                   viewBox="0 0 1166 398.67"
                 >
                   <path
-                    class="cls-1"
+                    className="cls-1"
                     d="M0,200s394-327,703,0,683,0,693,0V450H0Z"
                     transform="translate(0 -41.33)"
                   />
@@ -46,7 +46,7 @@ function HomePage(props) {
                   viewBox="0 0 1166 398.67"
                 >
                   <path
-                    class="cls-1"
+                    className="cls-1"
                     d="M0,200s394-327,703,0,683,0,693,0V450H0Z"
                     transform="translate(0 -41.33)"
                   />
@@ -69,7 +69,7 @@ function HomePage(props) {
                   viewBox="0 0 1166 398.67"
                 >
                   <path
-                    class="cls-1"
+                    className="cls-1"
                     d="M0,200s394-327,703,0,683,0,693,0V450H0Z"
                     transform="translate(0 -41.33)"
                   />
@@ -79,10 +79,10 @@ function HomePage(props) {
           </div>
         </div>
       </div>
-      <div class="wave wave1"></div>
-      <div class="wave wave2"></div>
-      <div class="wave wave3"></div>
-      <div class="wave wave4"></div>
+      <div className="wave wave1"></div>
+      <div className="wave wave2"></div>
+      <div className="wave wave3"></div>
+      <div className="wave wave4"></div>
     </section>
   );
 }

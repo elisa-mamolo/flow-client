@@ -3,7 +3,7 @@ import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import { Navbar, Container, Button, Nav, Image } from "react-bootstrap";
 import { AuthContext } from "../context/auth.context";
-import LogoImage from "../waveicon.png";
+//import LogoImage from "../waveicon.png";
 
 const API_URL = "https://flow-acquarium-app.herokuapp.com";
 
@@ -13,23 +13,23 @@ function NavBar(props) {
     <div>
       <Navbar className="navbar  navbar-dark bg-dark" variant="dark">
         <Container>
-          <Image
+          {/* <Image
             src={LogoImage}
             width="50"
             height="50"
             className="d-inline-block align-top"
             alt="logo"
-          />
+          /> */}
 
-          <Navbar.Brand href="/" className=" text-white">
+          <Navbar.Brand to="/" className=" text-white">
             Flow
           </Navbar.Brand>
           <Navbar.Toggle />
-          <Nav.Link href="/" className="text-white">
+          <Nav.Link to="/" className="text-white">
             Home
           </Nav.Link>
           {isLoggedIn && (
-            <Nav.Link href="/acquarium" className="text-white">
+            <Nav.Link to="/acquarium" className="text-white">
               Acquariums
             </Nav.Link>
           )}
@@ -38,7 +38,7 @@ function NavBar(props) {
             <Navbar.Text>
               {isLoggedIn && (
                 <p>
-                  Signed in as: <a href="#login">{user.username}</a>{" "}
+                  Signed in as:
                   <Button
                     className="bg-light text-black btn-light"
                     onClick={logOutUser}
