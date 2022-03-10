@@ -69,7 +69,10 @@ function AddLogPage(props) {
         setMeasurements([]);
         navigate("/acquarium");
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        const errorDescription = error.response.data.message;
+        setErrorMessage(errorDescription);
+      });
   };
 
   return (
