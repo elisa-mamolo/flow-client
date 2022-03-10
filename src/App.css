@@ -78,6 +78,8 @@
     transform: rotate(360deg);
   }
 }
+
+/*card waves*/
 #wave {
   bottom: 0;
   right: 0;
@@ -149,4 +151,10 @@ section .wave.wave4 {
   100% {
     background-position-x: -1000px;
   }
+}
+
+/*recharts style*/
+.recharts-cartesian-axis-tick {
+  font-size: 1.1rem;
+  font-family: Roboto, sans-serif;
 }

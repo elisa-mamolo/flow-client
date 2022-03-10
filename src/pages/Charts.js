@@ -88,8 +88,12 @@ function Charts(props) {
                 }}
               >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="timestamp" tickFormatter={formatXAxis} />
-                <YAxis />
+                <XAxis
+                  dataKey="timestamp"
+                  tick={{ fill: "rgba(255,255,255, 0.7)" }}
+                  tickFormatter={formatXAxis}
+                />
+                <YAxis tick={{ fill: "rgba(255,255,255, 0.7)" }} />
                 <Tooltip />
                 <Legend />
                 <Line
@@ -114,8 +118,12 @@ function Charts(props) {
                 }}
               >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="timestamp" tickFormatter={formatXAxis} />
-                <YAxis />
+                <XAxis
+                  dataKey="timestamp"
+                  tickFormatter={formatXAxis}
+                  tick={{ fill: "rgba(255,255,255, 0.7)" }}
+                />
+                <YAxis tick={{ fill: "rgba(255,255,255, 0.7)" }} />
                 <Tooltip />
                 <Legend />
                 <Line
@@ -139,8 +147,12 @@ function Charts(props) {
                 }}
               >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="timestamp" tickFormatter={formatXAxis} />
-                <YAxis />
+                <XAxis
+                  dataKey="timestamp"
+                  tickFormatter={formatXAxis}
+                  tick={{ fill: "rgba(255,255,255, 0.7)" }}
+                />
+                <YAxis tick={{ fill: "rgba(255,255,255, 0.7)" }} />
                 <Tooltip />
                 <Legend />
                 <Line
@@ -164,8 +176,16 @@ function Charts(props) {
                 }}
               >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis yAxisId="left" orientation="left" stroke="#8884d8" />
+                <XAxis
+                  dataKey="name"
+                  tick={{ fill: "rgba(255,255,255, 0.7)" }}
+                />
+                <YAxis
+                  yAxisId="left"
+                  orientation="left"
+                  stroke="#8884d8"
+                  tick={{ fill: "rgba(255,255,255, 0.7)" }}
+                />
                 <YAxis yAxisId="right" orientation="right" stroke="#82ca9d" />
                 <Tooltip />
                 <Legend />
