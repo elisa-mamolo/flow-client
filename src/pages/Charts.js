@@ -23,7 +23,6 @@ import {
 } from "recharts";
 
 const data = [];
-
 const API_URL = "https://flow-acquarium-app.herokuapp.com";
 
 function Charts(props) {

@@ -1,10 +1,10 @@
 // src/components/AddProject.js
 
 import { useState, useContext } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import { Button, Form } from "react-bootstrap";
-
 const API_URL = "https://flow-acquarium-app.herokuapp.com";
 
 function AddAcquarium(props) {
@@ -17,6 +17,7 @@ function AddAcquarium(props) {
   const { user } = useContext(AuthContext);
 
   const [errorMessage, setErrorMessage] = useState(undefined);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     //prevent rerendering
@@ -31,6 +32,7 @@ function AddAcquarium(props) {
         setLiters(0);
         setStarted(new Date().toDateString());
         setLogs([]);
+        props.refreshAcquariums();
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;

@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Moment from "moment";
 import { Button } from "react-bootstrap";
-
 const API_URL = "https://flow-acquarium-app.herokuapp.com";
 
 function LogRow(props) {

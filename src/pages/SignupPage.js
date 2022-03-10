@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Button, Form } from "react-bootstrap";
 import NavBar from "../components/NavBar";
-
 const API_URL = "https://flow-acquarium-app.herokuapp.com";
 
 function SignupPage(props) {

@@ -4,7 +4,6 @@ import axios from "axios";
 import { Navbar, Container, Button, Nav, Image } from "react-bootstrap";
 import { AuthContext } from "../context/auth.context";
 //import LogoImage from "../waveicon.png";
-
 const API_URL = "https://flow-acquarium-app.herokuapp.com";
 
 function NavBar(props) {

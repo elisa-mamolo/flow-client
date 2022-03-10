@@ -5,7 +5,6 @@ import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { Button, Form, FormCheck, Label, Table } from "react-bootstrap";
 import NavBarComponent from "../components/NavBar";
 import LogRow from "../components/LogRow";
-
 const API_URL = "https://flow-acquarium-app.herokuapp.com";
 function LogPage(props) {
   const [acquarium, setAcquarium] = useState([]);
