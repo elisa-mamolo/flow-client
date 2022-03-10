@@ -15,6 +15,9 @@ import {
   Tooltip,
   Legend,
   BarChart,
+  Area,
+  AreaChart,
+  ComposedChart,
   Bar,
 } from "recharts";
 
@@ -134,7 +137,7 @@ function Charts(props) {
                   <Legend />
                   <Line
                     type="monotone"
-                    dataKey="calcium"
+                    dataKey="alkalinity"
                     stroke="#8884d8"
                     activeDot={{ r: 8 }}
                   />
@@ -163,7 +166,36 @@ function Charts(props) {
                   <Legend />
                   <Line
                     type="monotone"
-                    dataKey="ph"
+                    dataKey="ammonia"
+                    stroke="#8884d8"
+                    activeDot={{ r: 8 }}
+                  />
+                </LineChart>
+              </div>
+              <div className="col-sm-12 col-md-6 col-lg-4">
+                <LineChart
+                  width={500}
+                  height={300}
+                  data={data}
+                  margin={{
+                    top: 5,
+                    right: 30,
+                    left: 20,
+                    bottom: 5,
+                  }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis
+                    dataKey="timestamp"
+                    tickFormatter={formatXAxis}
+                    tick={{ fill: "rgba(255,255,255, 0.7)" }}
+                  />
+                  <YAxis tick={{ fill: "rgba(255,255,255, 0.7)" }} />
+                  <Tooltip />
+                  <Legend />
+                  <Line
+                    type="monotone"
+                    dataKey="nitrite"
                     stroke="#8884d8"
                     activeDot={{ r: 8 }}
                   />
@@ -183,7 +215,8 @@ function Charts(props) {
                 >
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis
-                    dataKey="name"
+                    dataKey="timestamp"
+                    tickFormatter={formatXAxis}
                     tick={{ fill: "rgba(255,255,255, 0.7)" }}
                   />
                   <YAxis
@@ -195,9 +228,48 @@ function Charts(props) {
                   <YAxis yAxisId="right" orientation="right" stroke="#82ca9d" />
                   <Tooltip />
                   <Legend />
-                  <Bar yAxisId="left" dataKey="pv" fill="#8884d8" />
-                  <Bar yAxisId="right" dataKey="uv" fill="#82ca9d" />
+                  <Bar yAxisId="left" dataKey="nitrite" fill="#8884d8" />
+                  <Bar yAxisId="right" dataKey="nitrate" fill="#82ca9d" />
                 </BarChart>
+              </div>
+              <div className="col-sm-12 col-md-6 col-lg-4">
+                <AreaChart
+                  width={500}
+                  height={270}
+                  data={data}
+                  margin={{
+                    top: 10,
+                    right: 30,
+                    left: 0,
+                    bottom: 0,
+                  }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="timestamp" tickFormatter={formatXAxis} />
+                  <YAxis />
+                  <Tooltip />
+                  <Area
+                    type="monotone"
+                    dataKey="salinity"
+                    stackId="1"
+                    stroke="#8884d8"
+                    fill="#8884d8"
+                  />
+                  <Area
+                    type="monotone"
+                    dataKey="calcium"
+                    stackId="1"
+                    stroke="#82ca9d"
+                    fill="#82ca9d"
+                  />
+                  <Area
+                    type="monotone"
+                    dataKey="alkalinity"
+                    stackId="1"
+                    stroke="#ffc658"
+                    fill="#ffc658"
+                  />
+                </AreaChart>
               </div>
             </div>
           </div>

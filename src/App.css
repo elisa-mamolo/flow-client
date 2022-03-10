@@ -167,6 +167,11 @@ section .wave.wave4 {
   font-family: Roboto, sans-serif;
 }
 
+.recharts-cartesian-axis-tick {
+  font-size: 1.1rem;
+  font-family: Roboto, sans-serif;
+}
+
 /*card styling*/
 .card-container {
   width: 100%;

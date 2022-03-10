@@ -102,7 +102,7 @@ function AcquariumPage(props) {
                             </Button>
                             <Link to={`/addlog/${item._id}`}>
                               <Button className="mt-2 btn-custom-color">
-                                + Log
+                                +Log
                               </Button>
                             </Link>
                             <Link to={`/log/${item._id}`}>
