@@ -80,7 +80,7 @@ function Charts(props) {
       {data.length > 0 && (
         <div>
           <div className="alert alert-primary" role="alert">
-            <h4 className="titles">Acquarium: {acquarium.name}</h4>
+            Acquarium: {acquarium.name}
           </div>
           <div className="container centered">
             <div className="row">
