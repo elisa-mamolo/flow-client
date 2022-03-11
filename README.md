@@ -6,7 +6,7 @@ Flow is an app for supporting users in tracking their acquariums nutrient values
 
 #### Screenshot
 
-![screenshot of the app](https://github.com/ElisaMamolo/the-ocean/blob/master/public/images/screnshoot.PNG)
+![screenshot of the app](https://github.com/ElisaMamolo/flow-client/blob/master/public/images/screnshoot.PNG)
 
 #### Wireframes
 
