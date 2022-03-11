@@ -1,70 +1,104 @@
-# Getting Started with Create React App
+### Flow
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### Description of the project
 
-## Available Scripts
+Flow is an app for supporting users in tracking their acquariums nutrient values by having the possibility to input those values in a form of a log. Moreover, specific charts allow to visualize data and present them in another form to the user.
 
-In the project directory, you can run:
+#### Screenshot
 
-### `npm start`
+![screenshot of the app](https://github.com/ElisaMamolo/flow-client/blob/master/public/images/screnshot.PNG)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### Wireframes
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Before starting developing some wireframes have been created to have a clear structure to follow during the development phase.
 
-### `npm test`
+- Landing page and acquarium page.
+  ![Wireframe landingpage and acquariums](https://github.com/ElisaMamolo/flow-client/blob/master/public/images/landingpage.PNG)
+- Acquarium details, log table and the charts page.
+  ![Wireframe if logged in](https://github.com/ElisaMamolo/flow-client/blob/master/public/images/wireframe2.PNG)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### User Stories
 
-### `npm run build`
+- As a user visiting Flow I would like to view all my acquariums
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- As a user visiting Flow I would like to see acquariums logs
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- As a user visiting Flow I would like to be able to Signup
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- As a user visiting Flow I would like to be able to Login/Logout
 
-### `npm run eject`
+- As a loggedin user visiting Flow I will have access to charts, logs and acquariums
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- As a logged out user visiting Flow I will be informed that i don't have access to the specific content
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- As a user visiting Flow I would like to be able to CRUD on logs
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- As a user visiting Flow I would like to be able to CRUD on acquariums
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- As a user visiting Flow I would like to see charts
 
-## Learn More
+#### Technologies Used
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+:computer:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Express
+- MongoDB & Mongoose
+- MongoDB Atlas - db deployment
+- Heroku - server deployment
+- Netlify - client deployment
+- Bootstrap
+- Recharts
 
-### Code Splitting
+#### Components and page structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Pages:
 
-### Analyzing the Bundle Size
+- HomePage -> 3 cards for navigating in the app
+- AcquariumPage -> list of acquarium cards and button for adding acquarium
+- LogPage -> table with logs
+- EditAcquariumPage -> form for editing
+- EditLogPage -> form for editing
+- LoginPage -> form for login
+- SignupPage -> form for signup
+- Charts -> List of charts
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Components:
 
-### Making a Progressive Web App
+- AddAcquarium -> form for adding acquarium
+- LogRow -> display logs into row of a table
+- NavBar -> Links and Login/Logout
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+#### Project Link
 
-### Advanced Configuration
+https://flow-reeflog.netlify.app/
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+#### Future Work
 
-### Deployment
+:wrench:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+This is only an mvp, there are many areas that could be improved, here is a list of improvements and bugs:
 
-### `npm run build` fails to minify
+- Make routes more readable for the users
+- Log route can be called "acquarium details"
+- Edit acquarium, date is not prepopulated
+- Image for navbar missing
+- When ddeleting acquarium the table logs is visible for a fraction of a second
+- Navbar could show logged in user, it is creating issues so has been removed
+- Charts, data could be ordered by timestamp
+- Route for error page if route not found
+- Possibility to upload pictures of the acquarium
+- A quick refactoring round has been made, but some elements could be transformed in components
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+:wrench:
+
+#### Resources
+
+- Recharts for creating charts
+- Bootstrap for styling
+- Codepen for acquarium cards and wave effect
+
+#### Team members
+
+Elisa
+
+#### This is a learning project, if anything needs to be removed please reach out and it will be removed right away.

@@ -14,7 +14,7 @@
 }
 
 .centered {
-  margin-top: 8%;
+  margin-top: 5%;
 }
 
 .App-header {
@@ -177,8 +177,9 @@ section .wave.wave4 {
   width: 100%;
   height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: center;
+  margin-top: 8% !important;
 }
 
 .card-custom {
@@ -236,4 +237,9 @@ section .wave.wave4 {
 /*custom button color*/
 .btn-custom-color {
   background-color: #243b55 !important;
+}
+
+/*image logo*/
+.imagelogo {
+  margin-right: 2% !important;
 }

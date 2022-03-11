@@ -3,7 +3,7 @@ import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import { Navbar, Container, Button, Nav, Image } from "react-bootstrap";
 import { AuthContext } from "../context/auth.context";
-//import LogoImage from "../waveicon.png";
+//import LogoImage from "./images/waveiconnew.png";
 
 const API_URL = "https://flow-acquarium-app.herokuapp.com";
 
@@ -13,13 +13,13 @@ function NavBar(props) {
     <div>
       <Navbar className="navbar  navbar-dark bg-dark" variant="dark">
         <Container>
-          {/* <Image
-            src={LogoImage}
-            width="50"
-            height="50"
-            className="d-inline-block align-top"
+          <Image
+            src="/images/wave2.png"
+            width="70"
+            height="70"
+            className="d-inline-block align-top imagelogo"
             alt="logo"
-          /> */}
+          />
 
           <Navbar.Brand href="/" className=" text-white">
             Flow
